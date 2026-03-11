@@ -1,0 +1,1166 @@
+{
+  "494da7f90cef359ef2c3e35607234ce2": {
+    "caption": "The image features a collection of vintage suitcases, each with its own unique characteristics and details. The suitcase in the foreground is black leather with a silver clasp and a tag with red writing and stars, indicating that it may be for sale or on display. The suitcase behind it is made of a yellowish material with a brown handle and a tag with white writing, suggesting that it may also be for sale or on display. The background of the image is a yellow wall, which adds to the overall sense of nostalgia and history surrounding the suitcases. Overall, the image appears to be a still life or a display of vintage luggage, possibly in a store or museum setting.",
+    "image_hash": "494da7f90cef359ef2c3e35607234ce2",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 0
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 1
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 2
+      }
+    ]
+  },
+  "b27e2cc0556bb917510ee2af6edc1af4": {
+    "caption": "This image features a grey cat perched on a wooden desk, intently gazing at a black laptop screen. The cat's fur is flecked with white, and its ears are perked up as it appears to be engaged with the screen. The laptop is positioned on the right side of the desk, with its keyboard facing the cat. A black mouse is placed on the left side of the desk, while a few papers and a small white object are also visible. The background of the image is dominated by the wooden desk, with various papers and books on the wall behind it. Overall, the image suggests that the cat is interested in or attempting to interact with the laptop.",
+    "image_hash": "b27e2cc0556bb917510ee2af6edc1af4",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 6
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 7
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 8
+      }
+    ]
+  },
+  "4075f2cc654822a48211c89423b96004": {
+    "caption": "The image shows a table with several plates of food, a glass of water, and other items. The plate in the foreground is empty, with only a fork on it. The background is dark, but there are other plates with food on them, as well as a glass of water, a bottle of wine, and other items. The overall atmosphere suggests a social gathering or meal, but the lack of food on the plate in the foreground suggests that someone may have already finished their meal. The dimly lit room and empty plate create a sense of abandonment or conclusion.",
+    "image_hash": "4075f2cc654822a48211c89423b96004",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 3
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 4
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 5
+      }
+    ]
+  },
+  "750ff8e48cc58920417ca5273a6313e2": {
+    "caption": "This image features a black dog lying on the floor in a kitchen, with its head slightly raised and its tail curled up. The dog is wearing a red collar and has a red tag on its ear. A bag of dog food is placed on the counter behind the dog, while a bowl of food and a water bowl are situated on the floor to its right. A dumbbell is also visible on the floor. The image is taken from an angle that allows the dog's face to be seen, but the rest of its body is not in view. The background of the image is a kitchen floor, with a white wall and a brown cabinet to the left of the dog. The overall atmosphere of the image is one of comfort and contentment, as the dog appears to be relaxed and at ease.",
+    "image_hash": "750ff8e48cc58920417ca5273a6313e2",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 9
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 10
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 11
+      }
+    ]
+  },
+  "ddfb2fad6ae0e099429f185408b1741d": {
+    "caption": "The image features a train traversing a bridge over a body of water, with a mountainous landscape serving as the backdrop. The train's cars are predominantly blue, while the bridge is constructed from steel and features multiple supports. The train's speed appears to be moderate, as it is not yet fully out of sight.\n\nIn the foreground, the body of water is calm and reflective, with a few trees and shrubs visible on the opposite bank. The mountainous landscape beyond the bridge is composed of rock and rock-like material, with a few trees and shrubs scattered across its surface. The sky above is a pale blue, indicating a clear and sunny day.\n\nThe overall atmosphere of the image is one of serenity and tranquility, with the train's presence adding a sense of movement and activity to the otherwise peaceful scene. The combination of the train, bridge, and mountainous landscape creates a sense of depth and context, while the calmness of the body of water and sky contributes to the overall feeling of tranquility.",
+    "image_hash": "ddfb2fad6ae0e099429f185408b1741d",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 15
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 16
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 17
+      }
+    ]
+  },
+  "1600a421b0b0731c6edecd278fbed3ad": {
+    "caption": "The image features a beach scene with a multicolored umbrella as its central focus. The umbrella, situated on the left side of the frame, has a white base and a white top. It is covered in horizontal stripes in various colors, including red, blue, green, yellow, orange, and pink. The umbrella's umbrella-like shape is partially open, with its fabric extending to the right.\n\nIn the background, a wave of blue-green water can be seen, with white foam at its top. The sand is light brown, and there is a small amount of sand on the left side of the frame, where the umbrella is located. The sky above is a light blue-gray color, with no clouds or other features visible.\n\nOverall, the image appears to be a still shot of a beach scene, possibly taken during the day when the sun is not directly overhead. The atmosphere is calm and peaceful, with no people or other objects in the background to disturb the scene. The focus on the umbrella and its colors creates a sense of visual interest and playfulness, while the surrounding environment adds a sense of calmness and serenity.",
+    "image_hash": "1600a421b0b0731c6edecd278fbed3ad",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 18
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 19
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 20
+      }
+    ]
+  },
+  "9474b5041a31bec9cd81ebc2bcf6d5b5": {
+    "caption": "The image shows a room in a building under construction or renovation, with many materials and tools visible.\n\nIn the foreground, there are several long, white, flat, and possibly made of drywall or similar material, laid out on the floor. There are also some metal or metal-looked tools or parts of tools on the floor. In the background, there are several more tools and materials, as well as several large, white, flat, and possibly made of drywall or similar material, placed against the wall. The room is dimly lit, with direct sunlight coming from the left side of the room, casting a warm, yellowish light. The walls and floor are made of wood or similar material, and there are several metal or metal-looked frames or support structures in the background. The overall atmosphere is one of construction or renovation, with many materials and tools in use or ready to be used.",
+    "image_hash": "9474b5041a31bec9cd81ebc2bcf6d5b5",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 21
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 22
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 23
+      }
+    ]
+  },
+  "11a060dac21e38e5c229562be9714135": {
+    "caption": "The image features a dog lying on a wooden floor, with the text \"MONDAY. JUST...MONDAY.\" superimposed over it.\n\nThe dog, positioned centrally in the image, is a small, light-colored breed with a short, smooth coat and large ears. Its head is turned to the right, and its eyes are closed, suggesting that it is sleeping. The dog's body is stretched out, with its front legs tucked under its chest and its back legs extended behind it.\n\nThe wooden floor, painted a faded blue, has visible cracks and scratches, indicating that it is old and worn. The overall atmosphere of the image is one of relaxation and tranquility, as the dog appears to be enjoying a peaceful nap. The text above and below the dog adds a sense of humor and irony to the image, implying that the dog is not looking forward to the start of the week.",
+    "image_hash": "11a060dac21e38e5c229562be9714135",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 15
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 14
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 14
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 15
+      }
+    ]
+  },
+  "05905bcef32d3b87bbf95e5a6f4e2da2": {
+    "caption": "The image shows a refrigerator stocked with various food items. The refrigerator is filled with a variety of food items, including:\n\n* A container of carrots\n* A container of strawberries\n* A container of blueberries\n* A container of yogurt\n* A container of milk\n* A container of cheese\n* A container of eggs\n* A container of fruit\n\nThe refrigerator is well-stocked and appears to be organized, with each item having its own designated space. The image suggests that the person who owns the refrigerator is someone who values healthy eating and has a good understanding of how to store food properly. Overall, the image presents a clean and organized view of a well-stocked refrigerator.",
+    "image_hash": "05905bcef32d3b87bbf95e5a6f4e2da2",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 29
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 31
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 30
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 28
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 27
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 27
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 28
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 29
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 30
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 31
+      }
+    ]
+  },
+  "d60021bf64741e107630b640c18e88db": {
+    "caption": "The image is a simple stick figure drawing that appears to be a humorous commentary on the concept of \"stacking\" in machine learning. The drawing features two stick figures, one labeled \"STATISTICAL LEARNING\" and the other labeled \"NEURAL NETWORKS.\"\n\n* The stick figure labeled \"STATISTICAL LEARNING\" is shown with a red squiggly line on a chart, indicating a trend or pattern.\n\t+ The figure is pointing to the chart and appears to be explaining something about the trend.\n\t+ The text next to the figure reads, \"People, our learner overgeneralizes because the VC-Dimension of our kernel is too high. Get some experts and minimize the structural risk in a new one. Rework our loss function, make the next kernel stable, unbiased, and consider using a soft margin.\"\n* The stick figure labeled \"NEURAL NETWORKS\" is shown with a green squiggly line on a chart, indicating a trend or pattern.\n\t+ The figure is pointing to the chart and appears to be explaining something about the trend.\n\t+ The text next to the figure reads, \"Stack more layers.\"\n\nThe image suggests that the two approaches are being compared, with the statistical learning approach being seen as more complex and requiring more expertise, while the neural networks approach is seen as more straightforward and easy to understand. The use of stick figures and simple language adds to the humor and lightheartedness of the image. Overall, the image is a humorous and relatable commentary on the challenges of machine learning and the need for expert knowledge to navigate them.",
+    "image_hash": "d60021bf64741e107630b640c18e88db",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 38
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 37
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 36
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 36
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 37
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 38
+      }
+    ]
+  },
+  "2ee39e72929d888a5c83b218503ceade": {
+    "caption": "The image depicts a hand-drawn sketch of a website design on a piece of paper, likely created by a user to share their idea. The design is titled \"My Joke Website\" and features a simple, handwritten layout with a few lines of text.\n\nThe sketch includes a title at the top, followed by a list of four lines of text, each with a unique style and font size. The text appears to be a list of jokes or punchlines, with each line starting with a square bracket and ending with a square bracket. The bottom of the page features a signature or initials, accompanied by the date \"2023\".\n\nThe background of the image is a wooden table or desk, providing a subtle context for the sketch. Overall, the image appears to be a rough, hand-drawn design created by a user to share their idea for a website. The design is simple and not particularly complex, but it still conveys a sense of creativity and innovation. The use of a simple, hand-drawn design suggests that the user may not have access to more advanced design tools or software. The image also suggests that the user may be seeking feedback or input from others, as they have shared their design with others. Overall, the image provides a glimpse into the creative process of a user and their idea for a website.",
+    "image_hash": "2ee39e72929d888a5c83b218503ceade",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 45
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 46
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 45
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 46
+      }
+    ]
+  },
+  "ed885b3d3f573bb036c61f9ad1352c24": {
+    "caption": "The image is a digital illustration of a man in a black and tan bodysuit, with his face and hands visible. He is holding a dog above his head with both hands. The man is in a pose as if he is about to throw the dog. The dog is a light tan color with a black nose and mouth. The background is a blue sky with clouds. The overall atmosphere of the image is playful and fun. The man and the dog seem to be having fun together, and the image conveys a sense of joy and playfulness. The image is likely meant to be used as a social media post or a meme, and it could be used to express a sense of playfulness or playfulness. The image is a digital illustration, and it is likely that it was created using a computer program or software. The image is not a photograph, and it is not a real-life scene. The image is meant to be entertaining and fun, and it is not meant to be taken seriously. The image is a representation of a fun and playful scenario, and it is meant to be used to add a touch of humor or playfulness to a social media post or a meme. The image is not meant to be taken seriously, and it is not meant to be used to convey a serious message or to make a serious point. The image is meant to be used to add a touch of fun and playfulness to a social media post or a meme. The image is not meant to be used to convey a serious message or to make a serious point. The image is meant to be used to add a touch of fun and playfulness to a social media post or a meme. The image is not meant to be used to convey a serious message or to make a serious point. The image is meant to be used to add a touch of fun and playfulness to a social media post or a meme. The image is not meant to be used to convey a serious message or to make a serious point. The image is meant to be used to add a touch of fun and playfulness to a social media post or a meme. The image is not meant to be used to convey a serious message or to make a serious point. The image is meant to be used to add a touch of fun and playfulness to a social media post or a m.",
+    "image_hash": "ed885b3d3f573bb036c61f9ad1352c24",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 11
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 12
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 13
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 11
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 12
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 13
+      }
+    ]
+  },
+  "a1a084ba4dc84ac720000143a602d80d": {
+    "caption": "The image features a photograph of the iconic Space Needle, a 605-foot-tall (185 meters) observation and radio tower in Seattle, Washington. The tower's distinctive saucer-shaped restaurant and observation deck are visible at the top, while its slender, tapering design is supported by four main columns. The tower's white exterior and black accents are set against a clear blue sky, with the surrounding cityscape and trees visible in the background. The overall effect is one of modernity and innovation, reflecting the tower's status as a symbol of Seattle and its role as a popular tourist destination.",
+    "image_hash": "a1a084ba4dc84ac720000143a602d80d",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 19
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 20
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 19
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 20
+      }
+    ]
+  },
+  "d58ea357b7a05d4f48dd5d2c62a60284": {
+    "caption": "The image features a long, weathered wooden pier extending from the foreground into the distance, where it meets a floating platform. The platform's metal railings and sturdy construction suggest it is intended for safe access to and from boats or other watercraft.\n\nThe surrounding environment is characterized by a calm, blue-green lake, flanked by a lush forest of evergreen trees that continue to the horizon. In the background, a snow-capped mountain range rises, while above, a cloudy sky hints at an impending storm.\n\nThe overall atmosphere of the image is one of serenity, with the stillness of the lake and the quiet of the forest creating a sense of peace. The image's composition and mood suggest that it was captured at a peaceful, early-morning or late-afternoon hour, when the light is soft and the air is still. The overall effect is one of tranquility and natural beauty.",
+    "image_hash": "d58ea357b7a05d4f48dd5d2c62a60284",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 24
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 23
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 23
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 24
+      }
+    ]
+  },
+  "65bdc8fe18e3d4a3b00e2309d5f14b6f": {
+    "caption": "The image presents an aerial view of Diamond Head, a famous volcanic crater on the island of Oahu, Hawaii. The crater's steep, conical shape is surrounded by a lush, green forest, while its rugged, rocky surface is visible in the center of the image. A road snakes around the crater's base, and a small, white building is visible on the left side of the image. The surrounding area is characterized by a mix of urban and natural landscapes, with a cityscape visible in the background and a beach and ocean visible in the foreground. The sky above is a deep blue, with a few white clouds scattered throughout. The overall atmosphere of the image is one of natural beauty and tranquility, with the crater's unique shape and the surrounding landscape creating a sense of wonder and awe.",
+    "image_hash": "65bdc8fe18e3d4a3b00e2309d5f14b6f",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 0
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 1
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 2
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 3
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 0
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 1
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 2
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 3
+      }
+    ]
+  },
+  "7fb50b0771fe3935bcc5d7a08d9e6637": {
+    "caption": "This image is a close-up of a character from an anime or manga. The character's face is central to the frame, with his dark brown hair and blue eyes taking center stage. He is wearing a blue jacket, white collared shirt, and red bow tie, which adds a touch of formality to his appearance. The background of the image is out of focus, but it appears to be a city or urban setting, with people walking in the distance. The overall atmosphere of the image is one of mystery and intrigue, suggesting that this character is a central figure in a story or investigation.",
+    "image_hash": "7fb50b0771fe3935bcc5d7a08d9e6637",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 21
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 22
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 22
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 21
+      }
+    ]
+  },
+  "5571d855f7b26455d627aefdb36e7184": {
+    "caption": "The image shows a man in a yellow jacket ironing a blue shirt on the back of a yellow taxi cab. The man is standing on the back of the taxi, which is stopped in the middle of the road. He is holding an iron and an ironing board, and appears to be ironing the shirt. The background is a city street with tall buildings and trees. The overall mood of the image is surreal and comical, as it is not common to see someone ironing on the back of a moving vehicle. The image is likely intended to be humorous or satirical.",
+    "image_hash": "5571d855f7b26455d627aefdb36e7184",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 25
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 26
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 26
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 25
+      }
+    ]
+  },
+  "a72c5767d1e0780901760b756b78ff1a": {
+    "caption": "The image features three white mugs with Mario's face on them, arranged in a row on a white surface. The mugs are identical in design, with a white background and a large, full-face portrait of Mario's face in the center. The mugs are turned slightly to the left, with their handles facing away from the viewer. The background is out of focus, but it appears to be a dark-colored wall or surface. The overall atmosphere of the image is one of fun and playfulness, suggesting that the mugs are intended for use in a children's or gaming-related context.",
+    "image_hash": "a72c5767d1e0780901760b756b78ff1a",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 32
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 33
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 33
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 32
+      }
+    ]
+  },
+  "8b480a1dd564a3f7026c848c8269143f": {
+    "caption": "The image features a close-up view of five lobster tails, arranged in a row, with their white meat visible and their red shells exposed. The tails are seasoned with herbs and spices, and are accompanied by lemon slices and parsley. The background is a dark, slightly wet surface, which appears to be a cooking surface or plate. The overall atmosphere of the image suggests a professional food photography setup, with a focus on showcasing the presentation and visual appeal of the dish. The image is likely intended to be used as a recipe or food blog image.",
+    "image_hash": "8b480a1dd564a3f7026c848c8269143f",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 34
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 34
+      }
+    ]
+  },
+  "3f0d0b6eeec883e30d4e5af60111b38b": {
+    "caption": "The image features a dark-brown baking pan with a batch of chicken nugget pieces inside. The nuggets are light-brown and appear to be freshly cooked, with some still retaining their original shape. The background of the image is white, with a simple text message at the top that reads, \"Sometimes I just look at pictures of the earth from space and I marvel at how beautiful it all is.\" The overall atmosphere of the image is one of simplicity and tranquility, with the focus on the humble, everyday object of the chicken nuggets. The contrast between the earthy, natural world and the artificial, man-made environment of the baking pan is also worth noting.",
+    "image_hash": "3f0d0b6eeec883e30d4e5af60111b38b",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 35
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 35
+      }
+    ]
+  },
+  "97ba6c6159a06add3ddf5ad84560e868": {
+    "caption": "The image features a split-screen composition, with a left-hand photo and a right-hand photo.\n\nOn the left, a smartphone is connected to a blue, compact adapter via a white cable. The phone's screen is not visible. The left-hand photo is taken from a low angle, with the phone resting on a tan, corded fabric.\n\nOn the right, a hand holds a blue, compact adapter with a white cable, next to a product packaging for \"Cable Mania\" with a blue and white design. The product is displayed on a tan, corded fabric. The packaging features a green label that reads \"For Lightning Cable\" in white text.\n\nThe background of both photos is a tan, corded fabric. The overall composition is clean and straightforward, with no other elements in the frame.",
+    "image_hash": "97ba6c6159a06add3ddf5ad84560e868",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 39
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 40
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 40
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 39
+      }
+    ]
+  },
+  "28bdb75fcd83fd33a570d67547f7a11a": {
+    "caption": "The image features a steaming bowl of ramen noodles as its central focus. The bowl, which has a black and gold Chinese-style design, is filled with a rich, creamy broth and garnished with a few green scallions. A portion of the noodles is lifted out of the bowl with a white, long-handled spoon, which is placed on the right side of the bowl.\n\nIn the background, a white plate with a blue-and-white border is partially visible, containing a green-tinged mixture of vegetables and meat. To the left of the bowl, a dark green plate or dish holds an orange, possibly a slice of a\u00a0chilli\u00a0or a\u00a0pepper\u00a0\u2014\u00a0the exact nature of which is difficult to determine.\n\nThe table is made of dark brown wood, and a white paper or card is positioned to the right of the bowl. The background is a warm, golden-brown wall of bamboo-style tiles. The overall atmosphere of the image is one of a hot,\u00a0wur\u00ad\u00ad\u00a0\u00ad-\u00ad\u00ad\u00a0\u00a0\u00a0\u00ad\u00a0\u00ad\u00a0\u00a0\u00ad\u00a0\u00a0\u00ad\u00a0\u00a0\u00ad\u00a0\u00a0\u00a0\u00a0\u00ad",
+    "image_hash": "28bdb75fcd83fd33a570d67547f7a11a",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 51
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 52
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 53
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 51
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 52
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 53
+      }
+    ]
+  },
+  "c725a39d183f915b107daf94f113b420": {
+    "caption": "The image shows a busy highway at night, with multiple lanes of traffic flowing in both directions. The road is lit by streetlights and traffic lights, and the cars are lit up by their own headlights and taillights. The background is dark, with trees and other vegetation visible on the right side of the image. The overall atmosphere is one of busy, high-traffic activity.",
+    "image_hash": "c725a39d183f915b107daf94f113b420",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 57
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 58
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 59
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 59
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 57
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 58
+      }
+    ]
+  },
+  "da371318cd10bea33a21aa533a8b1469": {
+    "caption": "The image depicts a luggage cart in a hotel lobby, showcasing a collection of bags and suitcases. The cart's metal frame features a flat surface and a curved top, with a row of hooks at the top. Various items are suspended from the hooks, including:\n\n\u2022 White plastic bags\n\u2022 A white shopping bag with a red logo\n\u2022 A white bag with a blue logo\n\u2022 A white bag with a red logo\n\nOn the cart's surface, several pieces of luggage are arranged, including:\n\n\u2022 A black suitcase\n\u2022 A gray duffel bag\n\u2022 A gray suitcase\n\nIn the background, a hotel lobby is visible, with a white marble floor and a few people standing around. The overall atmosphere suggests that the luggage cart is being used to transport guests' belongings to their rooms.",
+    "image_hash": "da371318cd10bea33a21aa533a8b1469",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 12
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 13
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 14
+      }
+    ]
+  },
+  "9554fe9e4fba3f4fed8dc6d9526b1eab": {
+    "caption": "This image depicts a pizza box with three slices of pizza, each in its own compartment, showcasing a variety of toppings. The leftmost slice features a white sauce base with a topping of chicken, while the middle slice has a red sauce base with a topping of chicken. The rightmost slice has a white sauce base with a topping of chicken and black olives.\n\nThe pizza box is open, with the top flaps lifted to reveal the slices. The background is a dark surface, providing a contrasting backdrop for the pizza box and its contents. Overall, the image presents a visually appealing and appetizing scene, highlighting the diversity of pizza toppings and the convenience of having multiple slices in one box.",
+    "image_hash": "9554fe9e4fba3f4fed8dc6d9526b1eab",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 24
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 25
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 26
+      }
+    ]
+  },
+  "a1495c9b3229e7b644dbb9fb0d9b9733": {
+    "caption": "The image shows a cardboard box with three donuts inside. The box is open, and the donuts are arranged in a row, with one donut in the front and two behind it.\n\nThe donuts are covered in a white glaze and topped with various toppings. The donut in the front has a generous helping of what appears to be coconut flakes. The two donuts behind it have what appears to be bacon bits on top. The background of the image is the inside of the box, which is made of brown cardboard. The box appears to be empty, with no other contents or packaging visible. The overall atmosphere of the image is one of simple, rustic presentation, with the focus on the three donuts and their toppings.",
+    "image_hash": "a1495c9b3229e7b644dbb9fb0d9b9733",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 27
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 28
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 29
+      }
+    ]
+  },
+  "b84752d8f1245d7d2d26d6a5ecfc46fb": {
+    "caption": "This image depicts a man standing in front of a window, holding up two garment bags. He has short, light-brown hair and is wearing a dark grey hoodie and blue jeans. The man is holding a red garment bag with a white logo on the left and a white garment bag on the right.\n\nIn the background, a blue suitcase with a red and white logo is visible to the right of the man. The window behind him has a white frame and appears to be partially covered by a red curtain. The overall scene suggests that the man is preparing to travel or has just arrived at his destination.",
+    "image_hash": "b84752d8f1245d7d2d26d6a5ecfc46fb",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 30
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 31
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 32
+      }
+    ]
+  },
+  "7bac1681864382a8389c5aef5de5c38a": {
+    "caption": "The image features three giraffes standing in a dry, grassy field, surrounded by trees and shrubs. The giraffes are positioned in the center of the image, with their heads and necks visible as they face away from the camera. The one on the right appears to be eating leaves from a nearby tree.\n\nIn the background, several trees and shrubs are visible, with a few other trees and a building in the distance. The overall atmosphere of the image suggests a sunny day in a savannah or grassland, with the giraffes seemingly enjoying their time in their natural habitat. The image's color palette is warm and earthy, with shades of brown, beige, and green, evoking a sense of serenity and tranquility.",
+    "image_hash": "7bac1681864382a8389c5aef5de5c38a",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 33
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 34
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 35
+      }
+    ]
+  },
+  "42ac21cd84fff297cfe8237a634f591d": {
+    "caption": "The image features a close-up of a giraffe's head and neck, with its face turned to the left and its ears slightly raised. The giraffe's fur is a light brown and white spotted pattern, with a brown mane running down its neck. The background is out of focus, but appears to be a green tree or bush with a blue sky visible above. The overall atmosphere suggests a sunny day in a park or zoo, with the giraffe seemingly enjoying the weather.",
+    "image_hash": "42ac21cd84fff297cfe8237a634f591d",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 36
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 37
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 38
+      }
+    ]
+  },
+  "0c111188e7ebb49c7a83cdf7722e39f0": {
+    "caption": "This image is an aerial view of a street scene, taken from above. In the foreground, a colorful tuk-tuk, with a black roof and a vibrant paint job, is parked on the street. The vehicle's design is striking, with a combination of blue, red, and green colors.\n\nTo the left of the tuk-tuk, a large, orange, tiger-like head is displayed on the sidewalk, with a green mouth and a blue eye. The head appears to be made of foam or plastic and is likely a part of a larger art installation or a marketing campaign.\n\nIn the background, a large, wooden, wooden structure is visible, which appears to be a part of a construction or building project. The structure is made of wooden planks and has a flat, flat-top design. The overall scene suggests that the tuk-tuk is being used as part of a marketing or advertising campaign, perhaps to draw attention to the nearby art installation or construction project.",
+    "image_hash": "0c111188e7ebb49c7a83cdf7722e39f0",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 39
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 40
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 41
+      }
+    ]
+  },
+  "4e99e3ae845bd59af4d8191cd71bd9db": {
+    "caption": "The image features a dark gray car parked on the street, parallel to the curb, with its front end pointing left. The vehicle is positioned in front of a brick wall and a tree with green leaves. The car's license plate is not visible.\n\nThe background of the image includes a red brick wall, a tree with green leaves, a white building, and a white pickup truck. The scene appears to be set in a city or town, with the car parked on a street or sidewalk. The overall atmosphere of the image is one of urban tranquility, with the car and surrounding environment creating a sense of calm and serenity.",
+    "image_hash": "4e99e3ae845bd59af4d8191cd71bd9db",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 42
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 43
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 44
+      }
+    ]
+  },
+  "6bcfcee6838909b3717a84079722f877": {
+    "caption": "The image shows a man with a toothbrush in his mouth. The man is balding and has a receding hairline, with grey hair on the sides of his head. He is wearing a white collared shirt and a dark blue cardigan. The toothbrush is blue and white, with bristles that are white and blue. The man is looking directly at the camera.\n\nThe background of the image is a plain white wall. The overall atmosphere of the image is one of playfulness and playfulness, as if the man is trying to make a point or make a joke. The use of a toothbrush in this way is not typical and suggests that the man is trying to be creative or make a point in a non-physical way. Overall, the image is meant to be humorous and entertaining.",
+    "image_hash": "6bcfcee6838909b3717a84079722f877",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 45
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 46
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 47
+      }
+    ]
+  },
+  "3545aa2d31c1c59a9fcaeaee84ccf973": {
+    "caption": "This image captures a commercial flight taking off from a runway, with the plane's blue and white livery prominently displayed. The aircraft, identified as United Airlines, is seen lifting off from the runway, while a smaller plane, identified as ANA (All Nippon Airways), is positioned behind it. The background features a blue sky and a mountain range in the distance, with a body of water in the foreground. A flock of birds is visible in the lower portion of the image, adding to the scene's context. Overall, the image conveys a sense of aviation and travel.",
+    "image_hash": "3545aa2d31c1c59a9fcaeaee84ccf973",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 48
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 49
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 50
+      }
+    ]
+  },
+  "0a9e4d9d992e02199f4999789d92cb88": {
+    "caption": "This image features a cat curled up on a plush, red velvet couch. The cat's fur is a mix of brown, black, and white, and it is facing away from the camera, with its head turned to the right. The cat is sitting on the middle cushion of the couch, with its front paws tucked under its body and its hind paws extended behind it.\n\nThe couch itself is made of rich, red velvet and features three distinct sections: two smaller sections on the left and right, and a larger section in the middle where the cat is sitting. The background of the image is not visible, as the cat and the couch take up the entire frame. Overall, the image presents a cozy and intimate scene of a cat enjoying its time on a comfortable, red velvet couch.",
+    "image_hash": "0a9e4d9d992e02199f4999789d92cb88",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 51
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 52
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 53
+      }
+    ]
+  },
+  "ff80594195d18f4fd27af9ac283f1f82": {
+    "caption": "The image features a red stop sign with the word \"STOP\" written in white letters, located on a tree trunk. The sign is surrounded by lush greenery, including trees and bushes, and is situated on a street or road.\n\nIn the background, a blue car is partially visible, while a few trees and bushes are also present. The overall atmosphere of the image is one of serenity and natural beauty, with the stop sign serving as a focal point. The image appears to be taken in a park or park-like setting, with the stop sign serving as a reminder to slow down and enjoy the surroundings.",
+    "image_hash": "ff80594195d18f4fd27af9ac283f1f82",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 54
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 55
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 56
+      }
+    ]
+  },
+  "04d3757260b7c1e3c69ae5c750001437": {
+    "caption": "The image shows a group of people in a room, with a man in the center giving a thumbs-up. The room appears to be a conference or meeting space, with several people seated at tables or standing in the background.\n\n* A man in the center of the image is giving a thumbs-up.\n\t+ He is wearing a tan shirt and has his hand raised in a \"thumbs-up\" gesture.\n\t+ His facial expression is neutral, but his body language suggests he is feeling positive or enthusiastic.\n* A woman to the left of the man is holding a newspaper.\n\t+ She is wearing a dark-colored sweater and has her hair pulled back.\n\t+ She appears to be reading or studying the newspaper.\n* A man to the right of the central man is holding a glass of beer.\n\t+ He is wearing a yellow shirt and has a glass of beer in his hand.\n\t+ He appears to be enjoying his drink and is likely socializing with others in the room.\n\nOverall, the image suggests that the group is meeting or gathering for a social event, possibly a work-related or social event. The central man's thumbs-up suggests that he is feeling positive or enthusiastic about something, while the others in the room appear to be enjoying themselves.",
+    "image_hash": "04d3757260b7c1e3c69ae5c750001437",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 57
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 58
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 59
+      }
+    ]
+  },
+  "720356acd943d191e7cba6992a6fbcee": {
+    "caption": "The image shows a dimly lit room with a dog lying on a dog bed in the center. The dog is lying on a dog bed, which is placed on a dark-colored rug. The room is dimly lit, with a window in the background that lets in natural light. The window is covered with white vertical blinds, which are partially open, allowing a small amount of light to enter the room.\n\nThe room is dark, with only a few sources of light. The dog bed is in the center of the room, and it appears to be made of a soft, comfortable material. The dog is lying on the dog bed, but it is not possible to tell what breed it is or how it is feeling. The room is otherwise empty, with no other furniture or objects in sight. The overall atmosphere of the image is one of quietness and stillness, with the only sound being the dog's gentle breathing.",
+    "image_hash": "720356acd943d191e7cba6992a6fbcee",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 60
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 61
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 62
+      }
+    ]
+  },
+  "68d48defd1d891d2ee4dcee6ac9d15b6": {
+    "caption": "The image features an elephant standing in a sandbox area, with its trunk raised and its body turned to the left. The elephant is surrounded by various objects, including a blue object on the ground, a large rock to the left, and a black tire to the right. The background is a large, gray wall with a black door, which appears to be an exit. The overall atmosphere of the image suggests that the elephant is in a controlled environment, possibly a zoo or a similar setting, where it is being kept for its own safety and well-being.",
+    "image_hash": "68d48defd1d891d2ee4dcee6ac9d15b6",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 63
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 64
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 65
+      }
+    ]
+  },
+  "e5c815985a83d076a3f1aa7a85a90c14": {
+    "caption": "The image features a vibrant orange plate as the main subject, serving as a base for a delectable meal. On the left side of the plate, a red ceramic bowl contains a generous serving of steamed broccoli, artfully topped with a rich, yellow cheese sauce. To the right of the bowl, a golden fork lies flat, ready to be used.\n\nOn the right side of the plate, a sandwich made from a golden-brown bread roll is halved, with the top half placed on top of the bottom half. A blue toothpick is inserted into the top half of the sandwich, while a few pickle slices are placed to the right of the sandwich. The combination of these ingredients creates a satisfying and filling meal.\n\nIn the background, a portion of another orange plate is visible in the lower left corner, while a glass of milk and another plate are partially visible in the upper left corner. The entire scene is set against a dark brown table, providing a warm and inviting atmosphere for the meal. Overall, the image conveys a sense of comfort and satisfaction, suggesting that the meal is both delicious and fulfilling.",
+    "image_hash": "e5c815985a83d076a3f1aa7a85a90c14",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 66
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 67
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 68
+      }
+    ]
+  },
+  "55397785681f188fc6772afe6863a950": {
+    "caption": "The image features a white goose with a black-and-white head and orange beak and legs, walking on a path in a grassy area. The goose's head is turned to the left, and it is looking down at something on the ground. The background is out of focus, but it appears to be a grassy area with trees in the distance. The overall atmosphere of the image is peaceful and serene, with the goose seemingly enjoying its walk in the grassy area.",
+    "image_hash": "55397785681f188fc6772afe6863a950",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 69
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 70
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 71
+      }
+    ]
+  },
+  "7c0be7aaa7c1fd4e6362c282a90d47b5": {
+    "caption": "The image shows a young boy riding a red bicycle with training wheels on a paved road or path. The boy is wearing a yellow and orange helmet, a white and blue shirt, khaki shorts, and white and blue sneakers. He is pedaling the bike with both hands on the handlebars and is looking straight ahead.\n\nThe background is a light gray, smooth, and flat surface, possibly a road or path made of concrete or asphalt. The overall scene is one of a child learning to ride a bike, with the training wheels providing support and stability. The image conveys a sense of fun and excitement as the boy rides his bike, free to explore and enjoy the outdoors.",
+    "image_hash": "7c0be7aaa7c1fd4e6362c282a90d47b5",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 72
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 73
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 74
+      }
+    ]
+  },
+  "e78866e8fe8a24bdda877eae519af175": {
+    "caption": "The image shows three people sitting at a table with wine glasses and bottles of wine in front of them. The three people are sitting at a table in a restaurant or bar. The two women are sitting on the left and right sides of the table, and the man is sitting in the middle. They are all holding wine glasses and smiling at the camera. The table is made of wood and has a white tablecloth. There are several bottles of wine on the table, including a red wine and a white wine. There are also several wine glasses on the table. The background of the image is out of focus, but it appears to be a restaurant or bar with several people sitting at tables. There are also several people standing in the background, including a man in a white and blue striped shirt. The overall atmosphere of the image is one of relaxation and enjoyment. The three people in the image appear to be having a good time, and the atmosphere of the restaurant or bar is casual and welcoming.",
+    "image_hash": "e78866e8fe8a24bdda877eae519af175",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 75
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 76
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 77
+      }
+    ]
+  },
+  "678451a336c594b2685f74638e2dc3a1": {
+    "caption": "The image features a street scene with a clock, trees, and flowers. In the foreground, a large, round clock is mounted on a tall, black pole. The clock face is white with black numbers and hands, and it is located in the center of the image. The clock's face is slightly concave, and it is surrounded by a black border.\n\nIn the background, several trees are visible, including one with a few branches that appear to be missing. There are also several flowerpots on the street, one of which is filled with pink flowers. The street is lined with buildings on either side, and a few people can be seen walking or standing on the sidewalk.\n\nThe overall atmosphere of the image is one of a sunny, late-summer or early-fall day, with the trees and flowers adding a sense of warmth and\u00a0... [more]",
+    "image_hash": "678451a336c594b2685f74638e2dc3a1",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 78
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 79
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 80
+      }
+    ]
+  },
+  "ccaa1f6aaa6105828d9b6507fb0fddb3": {
+    "caption": "The image shows a dirt road in a tropical setting, with a woman on a motorbike leading the way. She is wearing a black tank top and has her hair tied up, riding away from the camera. The road is surrounded by trees and plants, with several people and a cow visible in the background. The atmosphere is lively, with a sense of movement and activity. The overall mood is one of adventure and exploration, with the woman on the motorbike leading the way. The background is green and tropical, with palm trees and other plants adding to the sense of\u00a0...\u00a0[more]",
+    "image_hash": "ccaa1f6aaa6105828d9b6507fb0fddb3",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 81
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 82
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 83
+      }
+    ]
+  },
+  "674c596ecca5d5d56223833aa4389f97": {
+    "caption": "The image shows a skateboarder performing a trick on a ramp, with their board and legs in sharp focus. The board has a green design on the bottom and green wheels, while the rider's legs are visible from the back, wearing camouflage shorts and a white shirt. The rider's feet are positioned at the front of the board, with one foot on the board and one on the ramp.\n\nThe background of the image is out of focus, but it appears to be a skatepark or similar outdoor setting. The sky is blue and cloudy, with trees and buildings visible in the distance. The overall atmosphere of the image is one of action and energy, with the rider in mid-trick and the board and ramp in sharp focus. The image suggests that the rider is a skilled and experienced skater, and that they are using their skills to perform a complex and challenging trick.",
+    "image_hash": "674c596ecca5d5d56223833aa4389f97",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 84
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 85
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 86
+      }
+    ]
+  },
+  "ef4e579fcb167b94a60f294c88f7e85c": {
+    "caption": "The image shows a man and a woman sitting together on a wall near a body of water. The man is wearing a red t-shirt and blue jeans, and he is holding a multicolored umbrella. The woman is wearing a red t-shirt and a blue skirt, and she is holding a blue umbrella. There is a small white dog lying on the ground between them. In the background, there is a body of water with a few boats on it. The sky is overcast and grey, and there is a misty or foggy atmosphere.",
+    "image_hash": "ef4e579fcb167b94a60f294c88f7e85c",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 87
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 88
+      },
+      {
+        "dataset_group": "llava_bench_coco",
+        "question_id": 89
+      }
+    ]
+  },
+  "aa6adaf8cfc237f9659b2f2b0cf614d3": {
+    "caption": "The image is a digital art piece that reimagines the famous painting \"Mona Lisa\" by Leonardo da Vinci, but with a dog's face instead of a human. The dog's face is a long, tan-colored Dachshund with a black nose and dark eyes, and it is wearing a traditional Italian Renaissance-style head covering. The background of the painting is a landscape with mountains and water in the distance, but it is not as detailed or as richly colored as the original painting. The overall effect of the image is to create a sense of humor and playfulness, as it is a dog's face in a famous painting that is known for its enigmatic and mysterious nature. The image is likely intended to be humorous or ironic, and may be used to make someone who is familiar with the original painting laugh or make a comment about the absurdity of using a dog's face in a famous art piece.",
+    "image_hash": "aa6adaf8cfc237f9659b2f2b0cf614d3",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 9
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 8
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 8
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 9
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 10
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 10
+      }
+    ]
+  },
+  "79c2e9717257ebd94ba863136664eb7d": {
+    "caption": "The image features a 3D-rendered creature that appears to be a mix of a camel and a fire, with a bright red and orange body covered in yellow flames. The creature has a long, curved neck, a hump on its back, and a tail. Its eyes are large and black, and it has a small, round, red nose. The creature is wearing dark red glasses with black frames and black, chunky, square-shaped lenses. It is standing on a grey surface, with a similar grey background behind it. The overall atmosphere of the image is one of playfulness and fun.",
+    "image_hash": "79c2e9717257ebd94ba863136664eb7d",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 41
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 42
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 41
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 42
+      }
+    ]
+  },
+  "d07bf20cc4862736fadd6f354145d8e4": {
+    "caption": "The image features a split-screen composition, with a central image of a Subway sandwich on a black background and a circular logo in the top-left corner.\n\nThe sandwich, split in half, is made with a crusty bread roll, ham, red and yellow peppers, lettuce, red onion, and white cheese. It is placed on a black background, with some lettuce and red onion pieces scattered around it. The background is solid black, with no other visual elements.\n\nIn the top-left corner, a green and yellow circular logo is displayed. The logo has a green background with a yellow circle around it, and features the words \"SUBWAY\" and \"SERIES\" in white and yellow, respectively. Below the word \"SERIES\" is a green arrow pointing to the right, with the words \"A NEW WAY TO SUBWAY\" written in small white text. The overall design is clean and simple, with a focus on the central image of the sandwich.",
+    "image_hash": "d07bf20cc4862736fadd6f354145d8e4",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 54
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 55
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 56
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 54
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 55
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 56
+      }
+    ]
+  },
+  "ca851ab0be701bac9b41c9fdfcb150dd": {
+    "caption": "The image appears to be a simple, hand-drawn design for a website. The design is created using a blue pen on white paper.\n\nThe top section of the design features the words \"My Joke Website\" written in a handwriting-like font. The middle section contains the words \"Funny Joke\" in a similar font, with the words \"[push to reveal punchline]\" written in square brackets below it. The design is contained within a blue, hand-drawn square with a blue border.\n\nThe overall design appears to be a simple, hand-dorligns website with a focus on creating a sense of fun and playfulness. The use of a blue pen and white paper creates a clean and simple design that is easy to read and understand. The use of square brackets and the phrase \"push to reveal\" suggests that the design is meant to be interactive, with the user able to click on the words to reveal a joke. The design is simple and straightforward, but it does not include any images or other visual elements. Overall, the design is easy to understand and is likely to be effective in its intended purpose.",
+    "image_hash": "ca851ab0be701bac9b41c9fdfcb150dd",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 48
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 47
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 47
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 48
+      }
+    ]
+  },
+  "5cd813e5f83e5b2c1273caa05193f055": {
+    "caption": "The image features four whole mangosteen fruits and one cut open to display its white, fleshy interior, all arranged on a wooden table. The fruits are dark purple with green stems and leaves. The background is out of focus, but it appears to be a wooden table or surface with some leaves or other greenery in the upper right corner. The overall atmosphere is rustic and natural, with a focus on the fruit as the main subject.",
+    "image_hash": "5cd813e5f83e5b2c1273caa05193f055",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 4
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 5
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 6
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 7
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 4
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 5
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 6
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 7
+      }
+    ]
+  },
+  "a295d04623652e701eaaa3dcbffd9726": {
+    "caption": "The image is a painting of a woman with long, dark hair and a Renaissance-style dress. The woman is looking directly at the viewer with a slight, enigmatic smile. The background is a hazy, dreamlike landscape with distant mountains and a lake. The painting is done in a warm, golden light with deep, rich colors. The overall effect is one of both beauty and enigma.",
+    "image_hash": "a295d04623652e701eaaa3dcbffd9726",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 16
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 17
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 18
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 16
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 17
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 18
+      }
+    ]
+  },
+  "509c2a90a86ab2c75c267d8f10ba1f38": {
+    "caption": "The image depicts a whimsical scene of an unlikely friendship between a bear, a cat, and a rabbit, all gathered around a tree stump table. The bear, with its dark fur and bear-like features, sits on the left, holding a fork and eating a piece of food. The cat, with its grey fur and feline features, sits in the middle, holding a blue cup and appearing to be enjoying a drink. The rabbit, with its white fur and long ears, sits on the right, holding a pink cup and also enjoying a drink. The three animals are seated around a tree stump table, which is topped with a plate of various food items, including cookies, fruit, and other snacks. The background is a soft, gradient-like color, with some greenery and leaves in the top right corner, suggesting a peaceful, natural setting. The overall atmosphere of the image is one of friendship and enjoyment, as the three animals seem to be enjoying their time together. The image is likely a piece of art or a painting, given the vibrant colors and detailed features of the animals and the setting. Overall, the image is a charming and whimsical representation of an unlikely friendship, or perhaps a dream or a fantasy.",
+    "image_hash": "509c2a90a86ab2c75c267d8f10ba1f38",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 43
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 44
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 44
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_hard",
+        "question_id": 43
+      }
+    ]
+  },
+  "671454cf0b694945d5562c8fcfa905a7": {
+    "caption": "This image depicts a scene from the movie Titanic, where Leonardo DiCaprio and Kate Winslet are standing on the bow of the ship, embracing each other. DiCaprio, with his hair blown back by the wind, has his arms wrapped around Winslet's waist, while she wraps her arms around his neck, her head tilted back in joy. The two are standing in front of the ship's railing, with the open ocean stretching out behind them.\n\nIn the background, the sky is a deep blue with a few wispy clouds, while the sun is setting, casting a warm orange glow over the scene. The overall atmosphere is one of romance and freedom, with the couple's love and joy for each other radiating from the image. The image captures a pivotal moment in the movie, as the couple stands together, taking in the breathtaking view of the ocean.",
+    "image_hash": "671454cf0b694945d5562c8fcfa905a7",
+    "question_ids": [
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 50
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_easy",
+        "question_id": 49
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 49
+      },
+      {
+        "dataset_group": "llava_bench_in_the_wild_normal",
+        "question_id": 50
+      }
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "natural": {
+      "llava_bench_in_the_wild_normal_Arabic": {
+        "num_samples": 60,
+        "rp_score": 1.1581812169312171
+      },
+      "llava_bench_in_the_wild_normal_Greek": {
+        "num_samples": 60,
+        "rp_score": 1.226349206349206
+      },
+      "llava_bench_in_the_wild_normal_Chinese": {
+        "num_samples": 60,
+        "rp_score": 1.2051190476190479
+      },
+      "llava_bench_coco_Greek": {
+        "num_samples": 90,
+        "rp_score": 1.0998897707231037
+      },
+      "llava_bench_coco_Hindi": {
+        "num_samples": 90,
+        "rp_score": 1.0823941798941794
+      },
+      "llava_bench_in_the_wild_normal_German": {
+        "num_samples": 60,
+        "rp_score": 1.1794576719576717
+      },
+      "llava_bench_coco_Arabic": {
+        "num_samples": 90,
+        "rp_score": 1.1574074074074068
+      },
+      "llava_bench_in_the_wild_normal_Hindi": {
+        "num_samples": 60,
+        "rp_score": 1.1353637566137567
+      },
+      "llava_bench_in_the_wild_normal_Korean": {
+        "num_samples": 60,
+        "rp_score": 1.214761904761905
+      },
+      "llava_bench_in_the_wild_normal_English": {
+        "num_samples": 60,
+        "rp_score": 1.2977314814814815
+      },
+      "llava_bench_coco_German": {
+        "num_samples": 90,
+        "rp_score": 1.1561243386243385
+      },
+      "llava_bench_coco_Korean": {
+        "num_samples": 90,
+        "rp_score": 1.1212918871252202
+      },
+      "llava_bench_coco_Chinese": {
+        "num_samples": 90,
+        "rp_score": 1.1526366843033504
+      },
+      "llava_bench_coco_English": {
+        "num_samples": 90,
+        "rp_score": 1.1619708994708988
+      }
+  },
+  "synthetic": {
+      "llava_bench_coco_defocus_blur_5": {
+        "num_samples": 90,
+        "rp_score": 1.159043209876543
+      },
+      "llava_bench_coco_frost_5_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.160859788359788
+      },
+      "llava_bench_coco_frost_1_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.1793650793650792
+      },
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.2270105820105817
+      },
+      "llava_bench_coco_defocus_blur_3_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.1746781305114635
+      },
+      "llava_bench_coco_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.2503571428571425
+      },
+      "llava_bench_coco_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.1727821869488528
+      },
+      "llava_bench_coco_frost_1_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.2344532627865956
+      },
+      "llava_bench_coco_defocus_blur_3_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.2380335097001762
+      },
+      "llava_bench_coco_defocus_blur_3": {
+        "num_samples": 90,
+        "rp_score": 1.1467680776014102
+      },
+      "llava_bench_coco_frost_3_KeyboardAug_3": {
+        "num_samples": 89,
+        "rp_score": 1.2580479757446046
+      },
+      "llava_bench_coco_frost_3": {
+        "num_samples": 90,
+        "rp_score": 1.128425925925926
+      },
+      "llava_bench_coco_defocus_blur_5_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.2117592592592588
+      },
+      "llava_bench_coco_frost_5": {
+        "num_samples": 90,
+        "rp_score": 1.179523809523809
+      },
+      "llava_bench_coco_frost_1_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.1927865961199289
+      },
+      "llava_bench_coco_frost_5_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.1495590828924163
+      },
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.266212522045855
+      },
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.216613756613756
+      },
+      "llava_bench_coco_frost_1": {
+        "num_samples": 90,
+        "rp_score": 1.1382098765432096
+      },
+      "llava_bench_coco_frost_5_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.2168033509700171
+      },
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.1663315696649024
+      },
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.241358024691358
+      },
+      "llava_bench_coco_frost_3_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.2442989417989414
+      },
+      "llava_bench_coco_frost_5_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.2573897707231037
+      },
+      "llava_bench_coco_defocus_blur_1_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.2154012345679013
+      },
+      "llava_bench_coco_frost_3_sr_7": {
+        "num_samples": 89,
+        "rp_score": 1.36085696450865
+      },
+      "llava_bench_coco_frost_1_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.1862654320987653
+      },
+      "llava_bench_coco_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.2318121693121693
+      },
+      "llava_bench_coco_defocus_blur_5_sr_4": {
+        "num_samples": 90,
+        "rp_score": 1.1362301587301584
+      },
+      "llava_bench_coco_defocus_blur_1_sr_7": {
+        "num_samples": 90,
+        "rp_score": 1.2842548500881827
+      },
+      "llava_bench_coco_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.2015432098765426
+      },
+      "llava_bench_coco_defocus_blur_1": {
+        "num_samples": 90,
+        "rp_score": 1.2083465608465607
+      },
+      "llava_bench_coco_frost_3_KeyboardAug_1": {
+        "num_samples": 90,
+        "rp_score": 1.2087169312169308
+      },
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_3": {
+        "num_samples": 90,
+        "rp_score": 1.2032495590828918
+      }
+    
+  }
+}

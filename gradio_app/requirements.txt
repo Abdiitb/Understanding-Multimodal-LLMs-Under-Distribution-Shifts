@@ -1,0 +1,9 @@
+# Additional dependencies for the Gradio experiment app
+# (on top of what pyproject.toml already provides)
+gradio>=4.16.0
+pandas
+scipy
+datasets
+transformers>=4.37.2
+torch>=2.1.2
+Pillow

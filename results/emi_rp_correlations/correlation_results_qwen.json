@@ -1,0 +1,76 @@
+{
+  "natural": {
+    "num_datasets": 14,
+    "datasets": [
+      "llava_bench_coco_Arabic",
+      "llava_bench_coco_Chinese",
+      "llava_bench_coco_English",
+      "llava_bench_coco_German",
+      "llava_bench_coco_Greek",
+      "llava_bench_coco_Hindi",
+      "llava_bench_coco_Korean",
+      "llava_bench_in_the_wild_normal_Arabic",
+      "llava_bench_in_the_wild_normal_Chinese",
+      "llava_bench_in_the_wild_normal_English",
+      "llava_bench_in_the_wild_normal_German",
+      "llava_bench_in_the_wild_normal_Greek",
+      "llava_bench_in_the_wild_normal_Hindi",
+      "llava_bench_in_the_wild_normal_Korean"
+    ],
+    "Spearman Correlation": {
+      "correlation": 0.0857142857142857,
+      "p-value": 0.7707850311186757
+    },
+    "Kendall Tau Correlation": {
+      "correlation": 0.01098901098901099,
+      "p-value": 1.0
+    }
+  },
+  "synthetic": {
+    "num_datasets": 34,
+    "datasets": [
+      "llava_bench_coco_KeyboardAug_1",
+      "llava_bench_coco_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_1",
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_1_sr_4",
+      "llava_bench_coco_defocus_blur_1_sr_7",
+      "llava_bench_coco_defocus_blur_3",
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_3_sr_4",
+      "llava_bench_coco_defocus_blur_3_sr_7",
+      "llava_bench_coco_defocus_blur_5",
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_5_sr_4",
+      "llava_bench_coco_defocus_blur_5_sr_7",
+      "llava_bench_coco_frost_1",
+      "llava_bench_coco_frost_1_KeyboardAug_1",
+      "llava_bench_coco_frost_1_KeyboardAug_3",
+      "llava_bench_coco_frost_1_sr_4",
+      "llava_bench_coco_frost_1_sr_7",
+      "llava_bench_coco_frost_3",
+      "llava_bench_coco_frost_3_KeyboardAug_1",
+      "llava_bench_coco_frost_3_KeyboardAug_3",
+      "llava_bench_coco_frost_3_sr_4",
+      "llava_bench_coco_frost_3_sr_7",
+      "llava_bench_coco_frost_5",
+      "llava_bench_coco_frost_5_KeyboardAug_1",
+      "llava_bench_coco_frost_5_KeyboardAug_3",
+      "llava_bench_coco_frost_5_sr_4",
+      "llava_bench_coco_frost_5_sr_7",
+      "llava_bench_coco_sr_4",
+      "llava_bench_coco_sr_7"
+    ],
+    "Spearman Correlation": {
+      "correlation": -0.761650114591291,
+      "p-value": 1.6809187840159918e-07
+    },
+    "Kendall Tau Correlation": {
+      "correlation": -0.572192513368984,
+      "p-value": 1.948956004262247e-06
+    }
+  }
+}

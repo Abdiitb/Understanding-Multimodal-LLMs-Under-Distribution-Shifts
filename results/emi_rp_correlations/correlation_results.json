@@ -1,0 +1,10 @@
+{
+  "Spearman Correlation": {
+    "correlation": -0.20633179424556367,
+    "p-value": 0.1549117449794102
+  },
+  "Kendall Tau Correlation": {
+    "correlation": -0.18119950597051873,
+    "p-value": 0.06634387525651742
+  }
+}

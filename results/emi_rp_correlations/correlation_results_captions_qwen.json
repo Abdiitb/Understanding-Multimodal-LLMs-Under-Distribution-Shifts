@@ -1,0 +1,69 @@
+{
+  "natural": {
+    "num_datasets": 7,
+    "datasets": [
+      "llava_bench_coco_Arabic",
+      "llava_bench_coco_Chinese",
+      "llava_bench_coco_English",
+      "llava_bench_coco_German",
+      "llava_bench_coco_Greek",
+      "llava_bench_coco_Hindi",
+      "llava_bench_coco_Korean"
+    ],
+    "Spearman Correlation": {
+      "correlation": -0.1785714285714286,
+      "p-value": 0.7016579425162729
+    },
+    "Kendall Tau Correlation": {
+      "correlation": -0.14285714285714288,
+      "p-value": 0.7726190476190476
+    }
+  },
+  "synthetic": {
+    "num_datasets": 34,
+    "datasets": [
+      "llava_bench_coco_KeyboardAug_1",
+      "llava_bench_coco_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_1",
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_1_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_1_sr_4",
+      "llava_bench_coco_defocus_blur_1_sr_7",
+      "llava_bench_coco_defocus_blur_3",
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_3_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_3_sr_4",
+      "llava_bench_coco_defocus_blur_3_sr_7",
+      "llava_bench_coco_defocus_blur_5",
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_1",
+      "llava_bench_coco_defocus_blur_5_KeyboardAug_3",
+      "llava_bench_coco_defocus_blur_5_sr_4",
+      "llava_bench_coco_defocus_blur_5_sr_7",
+      "llava_bench_coco_frost_1",
+      "llava_bench_coco_frost_1_KeyboardAug_1",
+      "llava_bench_coco_frost_1_KeyboardAug_3",
+      "llava_bench_coco_frost_1_sr_4",
+      "llava_bench_coco_frost_1_sr_7",
+      "llava_bench_coco_frost_3",
+      "llava_bench_coco_frost_3_KeyboardAug_1",
+      "llava_bench_coco_frost_3_KeyboardAug_3",
+      "llava_bench_coco_frost_3_sr_4",
+      "llava_bench_coco_frost_3_sr_7",
+      "llava_bench_coco_frost_5",
+      "llava_bench_coco_frost_5_KeyboardAug_1",
+      "llava_bench_coco_frost_5_KeyboardAug_3",
+      "llava_bench_coco_frost_5_sr_4",
+      "llava_bench_coco_frost_5_sr_7",
+      "llava_bench_coco_sr_4",
+      "llava_bench_coco_sr_7"
+    ],
+    "Spearman Correlation": {
+      "correlation": -0.0612681436210848,
+      "p-value": 0.7306864944228255
+    },
+    "Kendall Tau Correlation": {
+      "correlation": -0.040998217468805706,
+      "p-value": 0.7331320411233753
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "minimal": {
+    "llava_bench_coco_sr_4": 1.3049304995681172,
+    "llava_bench_coco_sr_7": 1.3512828645080264,
+    "llava_bench_coco_KeyboardAug_1": 1.270304753325057,
+    "llava_bench_coco_defocus_blur_1": 1.0457187230564418,
+    "llava_bench_coco_frost_1": 1.1305620233175169
+  },
+  "easy": {
+    "llava_bench_coco_KeyboardAug_3": 1.415292549760264,
+    "llava_bench_coco_defocus_blur_3": 1.1315558756736366,
+    "llava_bench_coco_frost_3": 1.2150218659613907,
+    "llava_bench_coco_defocus_blur_5": 1.1930452289845985,
+    "llava_bench_coco_frost_5": 1.250251319898458
+  },
+  "medium": {
+    "llava_bench_coco_defocus_blur_1_sr_4": 1.4129242635631862,
+    "llava_bench_coco_defocus_blur_1_sr_7": 1.4572940644802161,
+    "llava_bench_coco_defocus_blur_1_KeyboardAug_1": 1.3766058994594634,
+    "llava_bench_coco_defocus_blur_3_sr_4": 1.498291039330394,
+    "llava_bench_coco_defocus_blur_3_sr_7": 1.5448911834571675,
+    "llava_bench_coco_defocus_blur_3_KeyboardAug_1": 1.4602713853709859,
+    "llava_bench_coco_defocus_blur_5_sr_4": 1.5633019121124807,
+    "llava_bench_coco_defocus_blur_5_sr_7": 1.6106188460698718,
+    "llava_bench_coco_defocus_blur_5_KeyboardAug_1": 1.5318072747408693,
+    "llava_bench_coco_frost_1_sr_4": 1.5003538373426073,
+    "llava_bench_coco_frost_1_sr_7": 1.5413012092878215,
+    "llava_bench_coco_frost_1_KeyboardAug_1": 1.4664521321608008,
+    "llava_bench_coco_frost_3_sr_4": 1.5790305280716477,
+    "llava_bench_coco_frost_3_sr_7": 1.6252692730673646,
+    "llava_bench_coco_frost_3_KeyboardAug_1": 1.547658199742269,
+    "llava_bench_coco_frost_5_sr_4": 1.617869369836879,
+    "llava_bench_coco_frost_5_sr_7": 1.6673328012915456,
+    "llava_bench_coco_frost_5_KeyboardAug_1": 1.5823444459091798
+  },
+  "high": {
+    "llava_bench_coco_defocus_blur_1_KeyboardAug_3": 1.5211689741517054,
+    "llava_bench_coco_defocus_blur_3_KeyboardAug_3": 1.6074615070499239,
+    "llava_bench_coco_defocus_blur_5_KeyboardAug_3": 1.673400154806767,
+    "llava_bench_coco_frost_1_KeyboardAug_3": 1.6071252192307668,
+    "llava_bench_coco_frost_3_KeyboardAug_3": 1.6923038465974591,
+    "llava_bench_coco_frost_5_KeyboardAug_3": 1.7270054983022889
+  }
+}
