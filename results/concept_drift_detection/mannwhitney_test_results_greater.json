@@ -1,0 +1,77 @@
+{
+  "dataset_dir": "results/concept_drift_detection/datasets",
+  "k_trials": 100,
+  "subset_size": 200,
+  "seed": 42,
+  "alpha": 0.05,
+  "alternative": "greater",
+  "method": "asymptotic",
+  "emid_scores_loaded_from": "results/concept_drift_detection/emid_subset_pair_scores.json",
+  "overall_test": {
+    "U_statistic": 38950.0,
+    "p_value": 5.516383318663425e-49,
+    "decision": "EMID separates ID and OOD (significant)"
+  },
+  "pairwise_tests": {
+    "D2_migrated": {
+      "U_statistic": 8950.0,
+      "p_value": 2.453849178121486e-22,
+      "decision": "Separates D1 from OOD (significant)"
+    },
+    "D3_migrated": {
+      "U_statistic": 10000.0,
+      "p_value": 1.2810718345817004e-34,
+      "decision": "Separates D1 from OOD (significant)"
+    },
+    "D4_migrated": {
+      "U_statistic": 10000.0,
+      "p_value": 1.2810718345817004e-34,
+      "decision": "Separates D1 from OOD (significant)"
+    },
+    "D5_migrated": {
+      "U_statistic": 10000.0,
+      "p_value": 1.2810718345817004e-34,
+      "decision": "Separates D1 from OOD (significant)"
+    }
+  },
+  "scores_summary": {
+    "scores_id_mean": -0.000824628658592701,
+    "scores_id_std": 0.014054895786631261,
+    "scores_id_min": -0.026732202619314194,
+    "scores_id_max": 0.033368971198797226,
+    "scores_ood_mean": -0.06783023530384526,
+    "scores_ood_std": 0.03339835726851596,
+    "scores_ood_min": -0.13832500390708447,
+    "scores_ood_max": 0.007497582584619522
+  },
+  "scores_ood_by_dataset_summary": {
+    "D2_migrated": {
+      "mean": -0.027106691114604474,
+      "std": 0.0160290472209551,
+      "min": -0.07764711603522301,
+      "max": 0.007497582584619522,
+      "n": 100
+    },
+    "D3_migrated": {
+      "mean": -0.05437006426975131,
+      "std": 0.012526756940182666,
+      "min": -0.09621395915746689,
+      "max": -0.028276477009058,
+      "n": 100
+    },
+    "D4_migrated": {
+      "mean": -0.08135068576782942,
+      "std": 0.013841128191816184,
+      "min": -0.11538024246692657,
+      "max": -0.04213134944438934,
+      "n": 100
+    },
+    "D5_migrated": {
+      "mean": -0.10849350006319583,
+      "std": 0.013310096319255874,
+      "min": -0.13832500390708447,
+      "max": -0.0741952396929264,
+      "n": 100
+    }
+  }
+}

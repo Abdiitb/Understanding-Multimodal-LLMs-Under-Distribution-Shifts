@@ -123,6 +123,38 @@ python main.py --model_name llava-v1.6-vicuna-13b --shift_type NATURAL
 
 * After running the above programs, you will find organized results at `results/*.json`.
 
+## POPE Small Experiment Pipeline
+
+You can run a POPE-only experiment with category-wise sampling (Adversarial / Popular / Random),
+LLaVA inference, CLUB training, and EMI/EMID computation.
+
+Expected POPE sample format (per record):
+
+```json
+{
+  "ques": "...",
+  "ans": "...",
+  "img": "path/to/image.jpg",
+  "category": "adversarial"
+}
+```
+
+Run:
+
+```bash
+python pope_experiment.py \
+  --pope-path /path/to/pope.jsonl \
+  --image-root /path/to/images \
+  --reference-model-jsonl data/data/llava_bench_coco_English_llava-v1.5-13b.jsonl \
+  --samples-per-category 50 \
+  --model-id llava-hf/llava-1.5-13b-hf \
+  --output-dir results/pope
+```
+
+Outputs:
+- `results/pope/pope_model_responses.json` (all model responses by category)
+- `results/pope/pope_emi_emid_metrics.json` (EMI per category + EMID wrt `llava_bench_coco_English_llava-v1.5-13b`)
+
 
 # Citation
 If this repository was useful to your works, please consider citing our paper!

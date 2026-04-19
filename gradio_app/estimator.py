@@ -95,36 +95,53 @@ class Embedder:
         """
         Encode a batch and return (z_v, z_t, z_yhat, z_y) all normalised 2-D tensors.
         """
+        def _mean_pool_from_output(output, attention_mask):
+            hidden = None
+            if hasattr(output, "hidden_states") and output.hidden_states is not None:
+                hidden = output.hidden_states[0]
+            elif hasattr(output, "last_hidden_state") and output.last_hidden_state is not None:
+                hidden = output.last_hidden_state
+            if hidden is None:
+                raise ValueError("Text encoder did not return hidden states or last_hidden_state")
+
+            mask = attention_mask.unsqueeze(-1)
+            masked = hidden * mask
+            denom = mask[:, 1:, :].sum(dim=1).clamp_min(1e-8)
+            return masked[:, 1:, :].sum(dim=1) / denom
+
         # Vision
         v_inputs = self.v_processor(images=images, return_tensors="pt", padding=True)
         v_inputs = {k: v.to(self.device) for k, v in v_inputs.items()}
-        z_v = (
-            self.v_model.vision_model(pixel_values=v_inputs["pixel_values"], output_hidden_states=True)
-            .hidden_states[-1][:, 1:, :]
-            .mean(dim=1)
-            .float()
-        )
+        pixel_values = v_inputs.get("pixel_values")
+        if pixel_values is None:
+            raise ValueError("Vision processor did not produce 'pixel_values'. Check image inputs passed to encode().")
+
+        v_out = self.v_model.vision_model(pixel_values=pixel_values, output_hidden_states=True)
+        if hasattr(v_out, "hidden_states") and v_out.hidden_states is not None:
+            v_tokens = v_out.hidden_states[-1]
+        elif hasattr(v_out, "last_hidden_state") and v_out.last_hidden_state is not None:
+            v_tokens = v_out.last_hidden_state
+        else:
+            raise ValueError("Vision encoder did not return hidden_states or last_hidden_state")
+        z_v = v_tokens[:, 1:, :].mean(dim=1).float()
 
         # Text inputs (questions)
         t_in = self.t_tokenizer(questions, return_tensors="pt", padding=True, truncation=True, max_length=512)
         t_in = {k: v.to(self.device) for k, v in t_in.items()}
-        mask_i = t_in["attention_mask"].unsqueeze(-1)
-        z_t = self.t_model(**t_in, output_hidden_states=True).hidden_states[0] * mask_i
-        z_t = z_t[:, 1:, :].sum(dim=1) / mask_i[:, 1:, :].sum(dim=1)
+        t_out = self.t_model(**t_in, output_hidden_states=True)
+        z_t = _mean_pool_from_output(t_out, t_in["attention_mask"])
 
         # Model answers
         t_yh = self.t_tokenizer(model_answers, return_tensors="pt", padding=True, truncation=True, max_length=512)
         t_yh = {k: v.to(self.device) for k, v in t_yh.items()}
-        mask_yh = t_yh["attention_mask"].unsqueeze(-1)
-        z_yhat = self.t_model(**t_yh, output_hidden_states=True).hidden_states[0] * mask_yh
-        z_yhat = z_yhat[:, 1:, :].sum(dim=1) / mask_yh[:, 1:, :].sum(dim=1)
+        t_yh_out = self.t_model(**t_yh, output_hidden_states=True)
+        z_yhat = _mean_pool_from_output(t_yh_out, t_yh["attention_mask"])
 
         # Reference answers
         t_y = self.t_tokenizer(ref_answers, return_tensors="pt", padding=True, truncation=True, max_length=512)
         t_y = {k: v.to(self.device) for k, v in t_y.items()}
-        mask_y = t_y["attention_mask"].unsqueeze(-1)
-        z_y = self.t_model(**t_y, output_hidden_states=True).hidden_states[0] * mask_y
-        z_y = z_y[:, 1:, :].sum(dim=1) / mask_y[:, 1:, :].sum(dim=1)
+        t_y_out = self.t_model(**t_y, output_hidden_states=True)
+        z_y = _mean_pool_from_output(t_y_out, t_y["attention_mask"])
 
         # Normalise
         z_v = F.normalize(z_v, p=2, dim=-1)

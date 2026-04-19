@@ -1,1 +1,4 @@
 Miniconda3-latest-Linux-x86_64.sh
+__pycache__/
+results/concept_drift_detection/datasets/images
+.vscode/

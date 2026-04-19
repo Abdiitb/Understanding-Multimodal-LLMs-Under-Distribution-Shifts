@@ -1,0 +1,15 @@
+{
+  "k_levels": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "k_max": 4,
+  "n_target": 5000,
+  "num_filtered_samples": 5000,
+  "split": "validation",
+  "streaming": true,
+  "output_dir": "results/concept_drift_detection/datasets",
+  "num_datasets_created": 5
+}

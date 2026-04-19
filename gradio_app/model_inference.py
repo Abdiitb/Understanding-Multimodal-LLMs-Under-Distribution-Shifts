@@ -5,14 +5,21 @@ Uses HuggingFace transformers for inference.
 """
 
 import torch
+from importlib.util import find_spec
 from transformers import (
     AutoModelForCausalLM,
     AutoProcessor,
     AutoTokenizer,
     LlavaForConditionalGeneration,
     LlavaNextForConditionalGeneration,
-    AutoModelForVision2Seq,
 )
+
+# `AutoModelForVision2Seq` was introduced in newer transformers releases; import
+# it only if available to avoid ImportError on older installs.
+try:
+    from transformers import AutoModelForVision2Seq
+except Exception:
+    AutoModelForVision2Seq = None
 
 # ---------------------------------------------------------------------------
 # Supported models
@@ -37,6 +44,26 @@ def get_model_choices():
 _model_cache: dict = {}
 
 
+def _can_use_device_map_auto() -> bool:
+    return find_spec("accelerate") is not None
+
+
+def _safe_from_pretrained(model_cls, model_id: str, model_kwargs: dict, dtype, device: str):
+    try:
+        return model_cls.from_pretrained(model_id, **model_kwargs), model_kwargs.get("device_map") == "auto"
+    except ValueError as exc:
+        message = str(exc).lower()
+        if "requires `accelerate`" not in message and "requires accelerate" not in message:
+            raise
+        print(
+            "[model_inference] Warning: accelerate runtime unavailable; retrying without device_map='auto'."
+        )
+        fallback_kwargs = {"torch_dtype": dtype}
+        model = model_cls.from_pretrained(model_id, **fallback_kwargs)
+        model = model.to(device)
+        return model, False
+
+
 def load_model(model_id: str):
     """
     Load a multimodal model + processor from HuggingFace.
@@ -47,32 +74,59 @@ def load_model(model_id: str):
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     dtype = torch.float16 if device == "cuda" else torch.float32
+    use_device_map = _can_use_device_map_auto()
+    model_kwargs = {"torch_dtype": dtype}
+    if use_device_map:
+        model_kwargs["device_map"] = "auto"
+    else:
+        print(
+            "[model_inference] Warning: 'accelerate' is not installed; loading model without device_map='auto'."
+        )
 
     if "llava-1.5" in model_id:
-        model = LlavaForConditionalGeneration.from_pretrained(
-            model_id, torch_dtype=dtype, device_map="auto"
+        model, used_device_map = _safe_from_pretrained(
+            LlavaForConditionalGeneration, model_id, model_kwargs, dtype, device
         )
         processor = AutoProcessor.from_pretrained(model_id)
     elif "llava-v1.6" in model_id:
-        model = LlavaNextForConditionalGeneration.from_pretrained(
-            model_id, torch_dtype=dtype, device_map="auto"
+        model, used_device_map = _safe_from_pretrained(
+            LlavaNextForConditionalGeneration, model_id, model_kwargs, dtype, device
         )
         processor = AutoProcessor.from_pretrained(model_id)
     elif "Qwen2-VL" in model_id:
-        model = AutoModelForVision2Seq.from_pretrained(
-            model_id, torch_dtype=dtype, device_map="auto"
-        )
+        if AutoModelForVision2Seq is not None:
+            model, used_device_map = _safe_from_pretrained(
+                AutoModelForVision2Seq, model_id, model_kwargs, dtype, device
+            )
+        else:
+            print(
+                "[model_inference] Warning: AutoModelForVision2Seq not available in this transformers installation; falling back to AutoModelForCausalLM. Multimodal behavior may not work."
+            )
+            model, used_device_map = _safe_from_pretrained(
+                AutoModelForCausalLM, model_id, model_kwargs, dtype, device
+            )
         processor = AutoProcessor.from_pretrained(model_id)
     elif "Llama-3.2" in model_id and "Vision" in model_id:
-        model = AutoModelForVision2Seq.from_pretrained(
-            model_id, torch_dtype=dtype, device_map="auto"
-        )
+        if AutoModelForVision2Seq is not None:
+            model, used_device_map = _safe_from_pretrained(
+                AutoModelForVision2Seq, model_id, model_kwargs, dtype, device
+            )
+        else:
+            print(
+                "[model_inference] Warning: AutoModelForVision2Seq not available in this transformers installation; falling back to AutoModelForCausalLM. Multimodal behavior may not work."
+            )
+            model, used_device_map = _safe_from_pretrained(
+                AutoModelForCausalLM, model_id, model_kwargs, dtype, device
+            )
         processor = AutoProcessor.from_pretrained(model_id)
     else:
-        model = AutoModelForCausalLM.from_pretrained(
-            model_id, torch_dtype=dtype, device_map="auto"
+        model, used_device_map = _safe_from_pretrained(
+            AutoModelForCausalLM, model_id, model_kwargs, dtype, device
         )
         processor = AutoProcessor.from_pretrained(model_id)
+
+    if not used_device_map:
+        model = model.to(device)
 
     model.eval()
     _model_cache[model_id] = (model, processor)
@@ -91,7 +145,13 @@ def generate_answer(model, processor, image, question: str, max_new_tokens: int 
     model_name = model.config._name_or_path if hasattr(model.config, "_name_or_path") else ""
 
     if "llava" in model_name.lower():
-        prompt = f"USER: <image>\n{question}\nASSISTANT:"
+        prompt = (
+            "USER: <image>\n"
+            "Answer the following question using only one word: yes or no. "
+            "Use lowercase letters only. Do not add any other text.\n"
+            f"Question: {question}\n"
+            "ASSISTANT:"
+        )
         inputs = processor(text=prompt, images=image, return_tensors="pt").to(device)
     elif "qwen2-vl" in model_name.lower():
         messages = [
@@ -128,6 +188,8 @@ def generate_answer(model, processor, image, question: str, max_new_tokens: int 
     input_len = inputs.get("input_ids", torch.tensor([])).shape[-1] if "input_ids" in inputs else 0
     generated = output_ids[0][input_len:]
     answer = processor.decode(generated, skip_special_tokens=True).strip()
+    if "llava" in model_name.lower():
+        answer = answer.lower()
     return answer
 
 

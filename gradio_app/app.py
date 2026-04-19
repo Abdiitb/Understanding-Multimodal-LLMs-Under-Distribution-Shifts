@@ -6,6 +6,25 @@ Launch with:
 """
 
 import os
+
+# Respect `GRADIO_GPU` env var to control which GPU is visible to the process.
+# This must be set before importing CUDA-using libraries (torch/transformers).
+gradio_gpu = os.environ.get("GRADIO_GPU")
+if gradio_gpu is not None and gradio_gpu != "":
+    os.environ["CUDA_VISIBLE_DEVICES"] = gradio_gpu
+    print(f"[gradio_app] set CUDA_VISIBLE_DEVICES={gradio_gpu} from GRADIO_GPU")
+
+# Early diagnostics to help when running over SSH (prints immediately).
+import sys
+import platform
+import logging
+import time
+
+logging.basicConfig(level=logging.INFO)
+print(f"[gradio_app] starting. pid={os.getpid()}, python={sys.version.split()[0]}, platform={platform.platform()}")
+print(f"[gradio_app] GRADIO_GPU={gradio_gpu}, CUDA_VISIBLE_DEVICES={os.environ.get('CUDA_VISIBLE_DEVICES')}")
+sys.stdout.flush()
+
 import json
 import traceback
 
@@ -57,6 +76,10 @@ def run_experiment(
     use_subset: bool,
     subset_size: int,
     compute_corr: bool,
+    compute_emi_metric: bool,
+    compute_emid_metric: bool,
+    compute_emid_ub_metric: bool,
+    compute_rp_metric: bool,
     progress=gr.Progress(track_tqdm=True),
 ):
     """
@@ -83,6 +106,10 @@ def run_experiment(
             return f"Error: Unknown model '{model_choice}'.", "", "", ""
 
         num_samples = subset_size if use_subset else None
+
+        # Validate metric selection
+        if not any([compute_emi_metric, compute_emid_metric, compute_emid_ub_metric, compute_rp_metric]):
+            return "Error: Select at least one metric to compute.", pd.DataFrame(), pd.DataFrame(), ""
 
         # ------------------------------------------------------------------
         # 1. Load CLUB estimator
@@ -130,13 +157,16 @@ def run_experiment(
         id_answers = run_inference_on_split(model, processor, id_ds, num_samples)
         log(f"  Generated {len(id_answers)} answers for ID split.")
 
-        # Compute embeddings for ID split
+        # Compute embeddings / EMI only if any EMI-related metric is requested
         id_images = list(id_ds["image"])
         id_questions = list(id_ds["question"])
         id_refs = list(id_ds["reference_answer"])
-        p_zv, p_zt, p_zyh, p_zy = embedder.encode(id_images, id_questions, id_answers, id_refs)
-        id_emi, id_model_mi, id_ref_mi = compute_emi(club, p_zv, p_zt, p_zyh, p_zy)
-        log(f"  ID EMI = {id_emi:.6f}")
+        id_emi = None
+        p_zv = p_zt = p_zyh = p_zy = None
+        if compute_emi_metric or compute_emid_metric or compute_emid_ub_metric or compute_corr:
+            p_zv, p_zt, p_zyh, p_zy = embedder.encode(id_images, id_questions, id_answers, id_refs)
+            id_emi, id_model_mi, id_ref_mi = compute_emi(club, p_zv, p_zt, p_zyh, p_zy)
+            log(f"  ID EMI = {id_emi:.6f}")
 
         # ------------------------------------------------------------------
         # 4. Run inference on each OOD split and compute metrics
@@ -144,20 +174,24 @@ def run_experiment(
         results_rows = []
         all_emi, all_emid, all_emid_ub, all_rp = [], [], [], []
 
-        # Add ID row
-        log(f"Step 4: Computing RP score for ID split...")
-        id_rp = compute_rp_scores(id_questions, id_refs, id_answers, id_images)
+        # Add ID row: compute RP only if requested; EMI shown only if computed
+        log(f"Step 4: Computing metrics for ID split...")
+        id_rp = {"mean_rp": None, "num_scored": 0}
+        if compute_rp_metric:
+            id_rp = compute_rp_scores(id_questions, id_refs, id_answers, id_images)
+            all_rp.append(id_rp["mean_rp"])
+
         results_rows.append({
             "Split": id_split,
             "Type": "ID (source)",
-            "EMI": round(id_emi, 6),
+            "EMI": round(id_emi, 6) if id_emi is not None and compute_emi_metric else "—",
             "EMID": "—",
             "EMID_UB": "—",
-            "RP Score": round(id_rp["mean_rp"], 4),
+            "RP Score": round(id_rp["mean_rp"], 4) if id_rp["mean_rp"] is not None else "—",
             "Num Samples": id_rp["num_scored"],
         })
-        all_emi.append(id_emi)
-        all_rp.append(id_rp["mean_rp"])
+        if id_emi is not None:
+            all_emi.append(id_emi)
 
         for idx, ood_split in enumerate(ood_splits):
             log(f"\n  [{idx+1}/{len(ood_splits)}] Processing OOD split: {ood_split}")
@@ -170,34 +204,46 @@ def run_experiment(
             ood_questions = list(ood_ds["question"])
             ood_refs = list(ood_ds["reference_answer"])
 
-            q_zv, q_zt, q_zyh, q_zy = embedder.encode(
-                ood_images, ood_questions, ood_answers, ood_refs
-            )
-            ood_emi, _, _ = compute_emi(club, q_zv, q_zt, q_zyh, q_zy)
-            emid = compute_emid(id_emi, ood_emi)
-            emid_ub = compute_emid_upperbound(p_zv, p_zt, p_zyh, p_zy, q_zv, q_zt, q_zyh, q_zy)
-
-            log(f"    EMI={ood_emi:.6f}, EMID={emid:.6f}, EMID_UB={emid_ub:.6f}")
+            # Compute EMI-related metrics only if requested
+            ood_emi = None
+            emid = None
+            emid_ub = None
+            if compute_emi_metric or compute_emid_metric or compute_emid_ub_metric or compute_corr:
+                q_zv, q_zt, q_zyh, q_zy = embedder.encode(
+                    ood_images, ood_questions, ood_answers, ood_refs
+                )
+                ood_emi, _, _ = compute_emi(club, q_zv, q_zt, q_zyh, q_zy)
+                if id_emi is not None:
+                    if compute_emid_metric or compute_corr:
+                        emid = compute_emid(id_emi, ood_emi)
+                    if compute_emid_ub_metric or compute_corr:
+                        emid_ub = compute_emid_upperbound(p_zv, p_zt, p_zyh, p_zy, q_zv, q_zt, q_zyh, q_zy)
 
             # RP score
-            log(f"    Computing RP score...")
-            ood_rp = compute_rp_scores(ood_questions, ood_refs, ood_answers, ood_images)
-            log(f"    RP={ood_rp['mean_rp']:.4f}")
+            ood_rp = {"mean_rp": None, "num_scored": 0}
+            if compute_rp_metric:
+                log(f"    Computing RP score...")
+                ood_rp = compute_rp_scores(ood_questions, ood_refs, ood_answers, ood_images)
+                log(f"    RP={ood_rp['mean_rp']:.4f}")
 
             results_rows.append({
                 "Split": ood_split,
                 "Type": "OOD (target)",
-                "EMI": round(ood_emi, 6),
-                "EMID": round(emid, 6),
-                "EMID_UB": round(emid_ub, 6),
-                "RP Score": round(ood_rp["mean_rp"], 4),
+                "EMI": round(ood_emi, 6) if ood_emi is not None and compute_emi_metric else "—",
+                "EMID": round(emid, 6) if emid is not None and compute_emid_metric else "—",
+                "EMID_UB": round(emid_ub, 6) if emid_ub is not None and compute_emid_ub_metric else "—",
+                "RP Score": round(ood_rp["mean_rp"], 4) if ood_rp["mean_rp"] is not None else "—",
                 "Num Samples": ood_rp["num_scored"],
             })
 
-            all_emi.append(ood_emi)
-            all_emid.append(emid)
-            all_emid_ub.append(emid_ub)
-            all_rp.append(ood_rp["mean_rp"])
+            if ood_emi is not None:
+                all_emi.append(ood_emi)
+            if emid is not None:
+                all_emid.append(emid)
+            if emid_ub is not None:
+                all_emid_ub.append(emid_ub)
+            if ood_rp["mean_rp"] is not None:
+                all_rp.append(ood_rp["mean_rp"])
 
         # ------------------------------------------------------------------
         # 5. Build results table
@@ -330,6 +376,28 @@ def build_ui():
                     info="Pearson (EMID vs EMID_UB), Spearman & Kendall (EMI vs RP).",
                 )
 
+                gr.Markdown("### 6. Metrics to compute")
+                compute_emi_metric = gr.Checkbox(
+                    label="Compute EMI",
+                    value=True,
+                    info="Compute Expected Mutual Information (EMI) for each split.",
+                )
+                compute_emid_metric = gr.Checkbox(
+                    label="Compute EMID",
+                    value=True,
+                    info="Compute EMID (difference between ID and OOD EMI).",
+                )
+                compute_emid_ub_metric = gr.Checkbox(
+                    label="Compute EMID Upper Bound",
+                    value=True,
+                    info="Compute the EMID upper bound estimate.",
+                )
+                compute_rp_metric = gr.Checkbox(
+                    label="Compute RP Score",
+                    value=True,
+                    info="Compute reference preference (RP) scores using the judge model.",
+                )
+
                 run_btn = gr.Button("Run Experiment", variant="primary", size="lg")
 
             # ---------- Right column: Outputs ----------
@@ -382,6 +450,10 @@ def build_ui():
                 use_subset,
                 subset_size,
                 compute_corr,
+                compute_emi_metric,
+                compute_emid_metric,
+                compute_emid_ub_metric,
+                compute_rp_metric,
             ],
             outputs=[results_table, corr_table, log_output, error_output],
         )
@@ -394,4 +466,24 @@ def build_ui():
 # ===================================================================
 if __name__ == "__main__":
     demo = build_ui()
-    demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
+    # Launch in SSH-friendly mode: do not attempt to open a browser on the server.
+    # Capture the returned URL(s) and print instructions for SSH port forwarding.
+    # Use prevent_thread_lock so the launch call doesn't swallow stdout on some systems
+    launch_result = demo.launch(
+        server_name="0.0.0.0",
+        server_port=7860,
+        share=False,
+        inbrowser=False,
+        prevent_thread_lock=True,
+    )
+    print("[gradio_app] Gradio launched. If you're on a remote SSH session, forward port 7860: `ssh -L 7860:localhost:7860 user@server` and open http://localhost:7860 in your local browser.")
+    print(f"[gradio_app] launch result: {launch_result}")
+    # Keep the main process alive so background Gradio threads can continue
+    try:
+        print("[gradio_app] Entering wait loop to keep process alive. Press Ctrl-C to exit.")
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("[gradio_app] KeyboardInterrupt received, shutting down.")
+    except Exception as e:
+        print(f"[gradio_app] Exception in main wait loop: {e}")

@@ -1,0 +1,77 @@
+{
+  "dataset_dir": "results/concept_drift_detection/datasets",
+  "k_trials": 30,
+  "subset_size": 50,
+  "seed": 42,
+  "alpha": 0.05,
+  "alternative": "less",
+  "method": "asymptotic",
+  "emid_scores_loaded_from": null,
+  "overall_test": {
+    "U_statistic": 3227.0,
+    "p_value": 0.9999999999900653,
+    "decision": "No significant separation"
+  },
+  "pairwise_tests": {
+    "D2_migrated": {
+      "U_statistic": 620.0,
+      "p_value": 0.9941446581035634,
+      "decision": "No significant separation"
+    },
+    "D3_migrated": {
+      "U_statistic": 814.0,
+      "p_value": 0.9999999645594307,
+      "decision": "No significant separation"
+    },
+    "D4_migrated": {
+      "U_statistic": 896.0,
+      "p_value": 0.9999999999796142,
+      "decision": "No significant separation"
+    },
+    "D5_migrated": {
+      "U_statistic": 897.0,
+      "p_value": 0.9999999999815514,
+      "decision": "No significant separation"
+    }
+  },
+  "scores_summary": {
+    "scores_id_mean": -0.0026314061135053633,
+    "scores_id_std": 0.024003347825771907,
+    "scores_id_min": -0.04499761760234833,
+    "scores_id_max": 0.04203210398554802,
+    "scores_ood_mean": -0.06454022702370518,
+    "scores_ood_std": 0.04290386104208311,
+    "scores_ood_min": -0.17035689641488716,
+    "scores_ood_max": 0.05106195900589228
+  },
+  "scores_ood_by_dataset_summary": {
+    "D2_migrated": {
+      "mean": -0.01910053448130687,
+      "std": 0.025988405414412306,
+      "min": -0.06660465151071548,
+      "max": 0.05106195900589228,
+      "n": 30
+    },
+    "D3_migrated": {
+      "mean": -0.05529658938758075,
+      "std": 0.029472656459870857,
+      "min": -0.10015552490949631,
+      "max": 0.01866506366059184,
+      "n": 30
+    },
+    "D4_migrated": {
+      "mean": -0.07578597255051137,
+      "std": 0.024334759370751413,
+      "min": -0.1334419958293438,
+      "max": -0.04220794886350632,
+      "n": 30
+    },
+    "D5_migrated": {
+      "mean": -0.10797781167542174,
+      "std": 0.03331818458855779,
+      "min": -0.17035689641488716,
+      "max": -0.03185075242072344,
+      "n": 30
+    }
+  }
+}

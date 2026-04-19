@@ -1,0 +1,52 @@
+{
+  "dataset_dir": "results/concept_drift_detection/datasets",
+  "k_trials": 100,
+  "subset_size": 200,
+  "seed": 42,
+  "alpha": 0.05,
+  "alternative": "less",
+  "method": "asymptotic",
+  "U_statistic": 37853.0,
+  "p_value": 1.0,
+  "decision": "No significant separation",
+  "scores_summary": {
+    "scores_id_mean": -0.0006738551333546638,
+    "scores_id_std": 0.01460080278469847,
+    "scores_id_min": -0.03276211768388748,
+    "scores_id_max": 0.03723919950425625,
+    "scores_ood_mean": -0.04950854152732063,
+    "scores_ood_std": 0.026161486827381137,
+    "scores_ood_min": -0.11235474376007915,
+    "scores_ood_max": 0.015666916966438293
+  },
+  "scores_ood_by_dataset_summary": {
+    "D2_migrated": {
+      "mean": -0.018825494833290577,
+      "std": 0.014956348396918284,
+      "min": -0.05566555634140968,
+      "max": 0.015666916966438293,
+      "n": 100
+    },
+    "D3_migrated": {
+      "mean": -0.041843270026147364,
+      "std": 0.014205015732741372,
+      "min": -0.07980265468358994,
+      "max": -0.00026158615946769714,
+      "n": 100
+    },
+    "D4_migrated": {
+      "mean": -0.05972962107509375,
+      "std": 0.01427205754833094,
+      "min": -0.08943028375506401,
+      "max": -0.026762189343571663,
+      "n": 100
+    },
+    "D5_migrated": {
+      "mean": -0.07763578017475084,
+      "std": 0.014638981585442423,
+      "min": -0.11235474376007915,
+      "max": -0.04625236615538597,
+      "n": 100
+    }
+  }
+}
