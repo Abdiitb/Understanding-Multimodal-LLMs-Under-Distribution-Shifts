@@ -189,7 +189,7 @@ def main():
     parser.add_argument(
         "--dataset-dir",
         type=Path,
-        default=Path("concept_drift_detection/datasets"),
+        default=Path("results/concept_drift_detection/datasets"),
         help="Directory containing d_k.json files (default: concept_drift_detection/datasets)",
     )
     parser.add_argument(

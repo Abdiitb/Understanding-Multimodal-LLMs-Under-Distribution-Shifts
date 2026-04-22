@@ -221,13 +221,110 @@ def _encode_texts(texts: list[str], model_name: str, batch_size: int = 64) -> to
     return torch.cat(all_embeddings, dim=0).float()
 
 
-def _compute_emi_from_class(emi_estimator: EMI, x: torch.Tensor, y_model: torch.Tensor, y_ref: torch.Tensor) -> float:
+def _compute_mi_chunked(
+    emi_estimator: EMI,
+    x: torch.Tensor,
+    y: torch.Tensor,
+    chunk_size: int,
+    device: torch.device,
+) -> float:
+    if x.shape[0] != y.shape[0]:
+        raise ValueError("x and y must have the same number of rows")
+    if x.ndim != 2 or y.ndim != 2:
+        raise ValueError("x and y must be 2D tensors")
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be > 0")
+    if x.shape[0] == 0:
+        raise ValueError("Cannot compute MI on empty tensors")
+
+    mi_est = emi_estimator.mi_est
+    if next(mi_est.parameters()).device != device:
+        mi_est.to(device)
+    mi_est.eval()
+
     with torch.inference_mode():
-        x_d = x.to(emi_estimator.device)
-        y_model_d = y_model.to(emi_estimator.device)
-        y_ref_d = y_ref.to(emi_estimator.device)
-        model_mi = float(emi_estimator.mi_est(x_d, y_model_d).item())
-        ref_mi = float(emi_estimator.mi_est(x_d, y_ref_d).item())
+        y_cpu = y.float().cpu()
+        y_mean = y_cpu.mean(dim=0, keepdim=True).to(device)
+        y_sq_mean = (y_cpu * y_cpu).mean(dim=0, keepdim=True).to(device)
+
+        total = 0.0
+        n = int(x.shape[0])
+        for start in range(0, n, chunk_size):
+            end = min(start + chunk_size, n)
+            x_b = x[start:end].to(device)
+            y_b = y[start:end].to(device)
+
+            mu, logvar = mi_est.get_mu_logvar(x_b)
+            inv_var = torch.exp(-logvar)
+
+            positive = -0.5 * ((mu - y_b) ** 2) * inv_var
+            sq_diff_mean = y_sq_mean - 2.0 * mu * y_mean + (mu**2)
+            negative = -0.5 * sq_diff_mean * inv_var
+
+            batch_sum = (positive.sum(dim=-1) - negative.sum(dim=-1)).sum()
+            total += float(batch_sum.item())
+
+    return float(total / x.shape[0])
+
+
+def _safe_compute_mi(
+    emi_estimator: EMI,
+    x: torch.Tensor,
+    y: torch.Tensor,
+    chunk_size: int,
+) -> float:
+    mi_est = emi_estimator.mi_est
+    original_device = next(mi_est.parameters()).device
+
+    try:
+        return _compute_mi_chunked(
+            emi_estimator=emi_estimator,
+            x=x,
+            y=y,
+            chunk_size=chunk_size,
+            device=original_device,
+        )
+    except torch.OutOfMemoryError:
+        if original_device.type != "cuda":
+            raise
+        print(
+            f"[Warning] CUDA OOM during MI estimation at chunk_size={chunk_size}. "
+            "Retrying on CPU for this computation..."
+        )
+        torch.cuda.empty_cache()
+        cpu_device = torch.device("cpu")
+        mi_est.to(cpu_device)
+        try:
+            return _compute_mi_chunked(
+                emi_estimator=emi_estimator,
+                x=x,
+                y=y,
+                chunk_size=chunk_size,
+                device=cpu_device,
+            )
+        finally:
+            mi_est.to(original_device)
+
+
+def _compute_emi_from_class(
+    emi_estimator: EMI,
+    x: torch.Tensor,
+    y_model: torch.Tensor,
+    y_ref: torch.Tensor,
+    mi_chunk_size: int,
+) -> float:
+    model_mi = _safe_compute_mi(
+        emi_estimator=emi_estimator,
+        x=x,
+        y=y_model,
+        chunk_size=mi_chunk_size,
+    )
+    ref_mi = _safe_compute_mi(
+        emi_estimator=emi_estimator,
+        x=x,
+        y=y_ref,
+        chunk_size=mi_chunk_size,
+    )
     return float(model_mi - ref_mi)
 
 
@@ -328,6 +425,7 @@ def evaluate_k(
     y_model_ood: torch.Tensor,
     y_ref_ood: torch.Tensor,
     emi_estimator: EMI,
+    mi_chunk_size: int,
 ) -> dict[str, Any]:
     subsets = _split_sorted_indices_by_pemi(pemi_ood, k)
 
@@ -347,6 +445,7 @@ def evaluate_k(
             x=x_ood.index_select(0, s_t),
             y_model=y_model_ood.index_select(0, s_t),
             y_ref=y_ref_ood.index_select(0, s_t),
+            mi_chunk_size=mi_chunk_size,
         )
         emid_k_class = float(emi_id_class - emi_k_class)
 
@@ -399,6 +498,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--embed-batch-size", type=int, default=64)
     parser.add_argument("--feature-dim", type=int, default=768)
     parser.add_argument("--mi-est-dim", type=int, default=256)
+    parser.add_argument(
+        "--mi-chunk-size",
+        type=int,
+        default=128,
+        help="Chunk size for MI class computation to reduce GPU memory",
+    )
     parser.add_argument("--k-values", type=str, default="10,15,20,25", help="Comma-separated K values")
     parser.add_argument(
         "--balanced-classes",
@@ -479,6 +584,7 @@ def main() -> None:
         x=x_id,
         y_model=y_model_id,
         y_ref=y_ref_id,
+        mi_chunk_size=args.mi_chunk_size,
     )
 
     k_values = [int(v.strip()) for v in args.k_values.split(",") if v.strip()]
@@ -498,6 +604,7 @@ def main() -> None:
             y_model_ood=y_model_ood,
             y_ref_ood=y_ref_ood,
             emi_estimator=emi_estimator,
+            mi_chunk_size=args.mi_chunk_size,
         )
         for k in k_values
     ]

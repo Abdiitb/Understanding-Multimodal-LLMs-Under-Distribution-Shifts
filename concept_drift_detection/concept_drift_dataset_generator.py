@@ -85,21 +85,22 @@ def _to_jsonable(value: Any) -> Any:
     return str(value)
 
 
-def _serialize_image_value(image_value: Any) -> Any:
+def _serialize_image_value(image_value: Any, include_image_bytes: bool = False) -> Any:
     if isinstance(image_value, dict):
         path_val = image_value.get("path")
         bytes_val = image_value.get("bytes")
         if "path" in image_value or "bytes" in image_value:
-            bytes_base64 = None
             num_bytes = None
-            if isinstance(bytes_val, (bytes, bytearray)):
-                num_bytes = len(bytes_val)
-                bytes_base64 = base64.b64encode(bytes(bytes_val)).decode("utf-8")
-            return {
+            payload: dict[str, Any] = {
                 "path": path_val,
-                "bytes_base64": bytes_base64,
                 "num_bytes": num_bytes,
             }
+            if isinstance(bytes_val, (bytes, bytearray)):
+                num_bytes = len(bytes_val)
+                payload["num_bytes"] = num_bytes
+                if include_image_bytes:
+                    payload["bytes_base64"] = base64.b64encode(bytes(bytes_val)).decode("utf-8")
+            return payload
 
     if hasattr(image_value, "size") and hasattr(image_value, "mode"):
         size_val = getattr(image_value, "size", None)
@@ -115,13 +116,13 @@ def _serialize_image_value(image_value: Any) -> Any:
     return _to_jsonable(image_value)
 
 
-def _extract_x(sample: dict[str, Any]) -> dict[str, Any]:
+def _extract_x(sample: dict[str, Any], include_image_bytes: bool = False) -> dict[str, Any]:
     wanted_fields = ["answers", "image_id", "question_id", "question", "image"]
     x: dict[str, Any] = {}
     for key in wanted_fields:
         if key in sample:
             if key == "image":
-                x[key] = _serialize_image_value(sample[key])
+                x[key] = _serialize_image_value(sample[key], include_image_bytes=include_image_bytes)
             else:
                 x[key] = _to_jsonable(sample[key])
     return x
@@ -169,12 +170,18 @@ def construct_dataset_with_corruption(
 
 # =======================
 
-def build_filtered_samples(split: str, n_target: int, streaming: bool) -> list[FilteredSample]:
+def build_filtered_samples(
+    split: str,
+    n_target: int,
+    streaming: bool,
+    include_image_bytes: bool,
+) -> list[FilteredSample]:
     # Limit threading to prevent GIL issues with streaming datasets
     if streaming:
         os.environ.setdefault('OMP_NUM_THREADS', '1')
         os.environ.setdefault('MKL_NUM_THREADS', '1')
         os.environ.setdefault('OPENBLAS_NUM_THREADS', '1')
+        os.environ.setdefault('HF_DATASETS_DISABLE_MULTIPROCESSING', '1')
     
     dataset = load_dataset("lmms-lab/VQAv2", split=split, streaming=streaming)
     dataset = dataset.cast_column("image", Image(decode=False))
@@ -190,7 +197,7 @@ def build_filtered_samples(split: str, n_target: int, streaming: bool) -> list[F
                 answers_counter = Counter(answers)
                 filtered.append(
                     FilteredSample(
-                        x=_extract_x(sample),
+                        x=_extract_x(sample, include_image_bytes=include_image_bytes),
                         answers_counter=answers_counter,
                     )
                 )
@@ -214,12 +221,26 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--n-target", type=int, default=1000)
     parser.add_argument("--split", type=str, default="validation")
     parser.add_argument("--streaming", action="store_true")
-    parser.add_argument("--output-dir", type=str, default="concept_drift_detection/datasets")
+    parser.add_argument(
+        "--include-image-bytes",
+        action="store_true",
+        help="Include image bytes as base64 in output JSON (larger and more memory intensive)",
+    )
+    parser.add_argument("--output-dir", type=str, default="results/concept_drift_detection/datasets")
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
 
+def _terminate_process(exit_code: int, streaming: bool) -> None:
+    sys.stdout.flush()
+    sys.stderr.flush()
+    if streaming:
+        os._exit(exit_code)
+    raise SystemExit(exit_code)
+
+
 def main() -> None:
+    args: argparse.Namespace | None = None
     try:
         args = parse_args()
         random.seed(args.seed)
@@ -228,41 +249,37 @@ def main() -> None:
             split=args.split,
             n_target=args.n_target,
             streaming=args.streaming,
+            include_image_bytes=args.include_image_bytes,
         )
 
         output_dir = Path(args.output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
 
         print("\nCreating datasets with increasing drift...")
+        dataset_specs = [
+            ("D1.json", 0.0),
+            ("D2.json", 0.2),
+            ("D3.json", 0.4),
+            ("D4.json", 0.6),
+            ("D5.json", 0.8),
+        ]
 
-        # ✅ D1: no drift
-        d1 = construct_dataset_clean(filtered)
-
-        # ✅ Increasing drift
-        d2 = construct_dataset_with_corruption(filtered, 0.2)
-        d3 = construct_dataset_with_corruption(filtered, 0.4)
-        d4 = construct_dataset_with_corruption(filtered, 0.6)
-        d5 = construct_dataset_with_corruption(filtered, 0.8)
-
-        datasets = {
-            "D1.json": d1,
-            "D2.json": d2,
-            "D3.json": d3,
-            "D4.json": d4,
-            "D5.json": d5,
-        }
-
-        for name, data in datasets.items():
+        for name, corruption_ratio in dataset_specs:
+            if corruption_ratio == 0.0:
+                data = construct_dataset_clean(filtered)
+            else:
+                data = construct_dataset_with_corruption(filtered, corruption_ratio)
             path = output_dir / name
             with path.open("w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2)
             print(f"Saved {name}: {len(data)} samples")
+            del data
 
         print("\n✅ Done! Concept drift datasets created.")
-        sys.exit(0)
+        _terminate_process(exit_code=0, streaming=args.streaming)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr, flush=True)
-        sys.exit(1)
+        _terminate_process(exit_code=1, streaming=bool(args and args.streaming))
 
 
 if __name__ == "__main__":

@@ -5,10 +5,32 @@ Plot EMID distributions (histograms/PDF with KDE) across all d_k datasets in one
 import json
 import argparse
 from pathlib import Path
+from collections.abc import Iterable
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+
+
+def _to_float_scores(values: Iterable) -> list[float]:
+	"""Convert a score collection to a numeric EMID list.
+
+	Supports either direct numeric values or dict items containing an ``emi`` key.
+	"""
+	numeric_scores: list[float] = []
+	for item in values:
+		if isinstance(item, dict):
+			if "emi" in item:
+				try:
+					numeric_scores.append(float(item["emi"]))
+				except (TypeError, ValueError):
+					continue
+			continue
+		try:
+			numeric_scores.append(float(item))
+		except (TypeError, ValueError):
+			continue
+	return numeric_scores
 
 
 def load_emid_scores(emid_scores_path: Path) -> dict[str, list[float]]:
@@ -20,7 +42,7 @@ def load_emid_scores(emid_scores_path: Path) -> dict[str, list[float]]:
 	scores = {}
 	for key, value in emid_data.items():
 		if key != "description" and isinstance(value, list):
-			scores[key] = value
+			scores[key] = _to_float_scores(value)
 	
 	return scores
 
@@ -52,6 +74,13 @@ def plot_emid_histograms(
 	for idx, label in enumerate(sorted_keys):
 		scores = np.array(plot_scores[label])
 		color = colors[idx % len(colors)]
+
+		if len(scores) < 2:
+			if len(scores) == 0:
+				print(f"  Warning: Skipping KDE for {label}: no scores available.")
+			else:
+				print(f"  Warning: Skipping KDE for {label}: need at least 2 scores.")
+			continue
 		
 		# Plot KDE curve
 		try:
@@ -66,7 +95,10 @@ def plot_emid_histograms(
 	
 	# Plot mean lines for each dataset
 	for idx, label in enumerate(sorted_keys):
-		scores = plot_scores[label]
+		scores = np.array(plot_scores[label])
+		if len(scores) == 0:
+			print(f"  Warning: Skipping mean line for {label}: no scores available.")
+			continue
 		mean_val = np.mean(scores)
 		color = colors[idx % len(colors)]
 		linestyle = "-" if label == "D1 (ID)" else "--"
@@ -88,6 +120,7 @@ def plot_emid_histograms(
 	ax.grid(True, alpha=0.3, linestyle="--")
 	
 	# Save figure
+	output_path.parent.mkdir(parents=True, exist_ok=True)
 	plt.tight_layout()
 	plt.savefig(output_path, dpi=300, bbox_inches="tight")
 	print(f"✓ Saved EMID histogram with KDE: {output_path}")
@@ -95,7 +128,10 @@ def plot_emid_histograms(
 	# Print statistics
 	print("\nStatistics (vertical lines show mean, curves show KDE density):")
 	for label in sorted_keys:
-		scores = plot_scores[label]
+		scores = np.array(plot_scores[label])
+		if len(scores) == 0:
+			print(f"  {label:15s}: no scores available")
+			continue
 		print(f"  {label:15s}: mean={np.mean(scores):9.6f}, std={np.std(scores):9.6f}, min={np.min(scores):9.6f}, max={np.max(scores):9.6f}")
 
 

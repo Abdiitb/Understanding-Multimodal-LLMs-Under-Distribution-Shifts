@@ -10,7 +10,13 @@ from pathlib import Path
 from PIL import Image
 
 try:
-    from transformers import AutoProcessor, LlavaForConditionalGeneration
+    from transformers import (
+        AutoImageProcessor,
+        AutoProcessor,
+        AutoTokenizer,
+        LlavaForConditionalGeneration,
+        LlavaProcessor,
+    )
     from tqdm.auto import tqdm
 except ImportError as e:
     raise ImportError(f"Required packages not found. Install with: pip install transformers pillow") from e
@@ -56,7 +62,41 @@ def generate_llava_predictions(dataset_path: Path, model_id: str = "llava-hf/lla
     """
     # Load model and processor
     print(f"Loading {model_id}...")
-    processor = AutoProcessor.from_pretrained(model_id)
+    try:
+        processor = AutoProcessor.from_pretrained(model_id)
+    except Exception as e:
+        error_text = str(e)
+        if (
+            "ModelWrapper" in error_text
+            or "tokenizer" in error_text.lower()
+            or "image_token" in error_text
+        ):
+            print("Warning: Fast tokenizer failed to load. Retrying with use_fast=False...")
+            try:
+                processor = AutoProcessor.from_pretrained(model_id, use_fast=False)
+            except Exception as slow_e:
+                slow_text = str(slow_e)
+                if "image_token" in slow_text or "unexpected keyword argument" in slow_text:
+                    print("Warning: AutoProcessor config is newer than installed transformers. Using compatibility processor construction...")
+                    try:
+                        image_processor = AutoImageProcessor.from_pretrained(model_id)
+                        tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=False)
+                        processor = LlavaProcessor(image_processor=image_processor, tokenizer=tokenizer)
+                    except Exception as compat_e:
+                        raise RuntimeError(
+                            "Failed to construct a compatible LlavaProcessor. "
+                            "Please either clear HF cache and retry, or upgrade transformers/tokenizers "
+                            "(recommended: transformers>=4.41, tokenizers>=0.19)."
+                        ) from compat_e
+                else:
+                    raise RuntimeError(
+                        "Failed to load processor with both fast and slow tokenizer paths. "
+                        "This can happen due to a corrupted HF cache or incompatible tokenizer package. "
+                        "Try: `huggingface-cli delete-cache` (or remove model cache folder), then retry."
+                    ) from slow_e
+        else:
+            raise
+
     model = LlavaForConditionalGeneration.from_pretrained(
         model_id,
         torch_dtype=torch.float16,
@@ -165,7 +205,7 @@ def main():
     output_dir = Path('results/concept_drift_detection')
     
     # Generate predictions for D1
-    d1_path = dataset_dir / 'D1.json'
+    d1_path = dataset_dir / 'D1_migrated.json'
     
     if not d1_path.exists():
         print(f"Error: {d1_path} not found")

@@ -16,6 +16,8 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
+import tempfile
 import time
 from pathlib import Path
 from typing import Any
@@ -23,7 +25,7 @@ from typing import Any
 import torch
 from datasets import Dataset, load_dataset
 from PIL import Image
-from transformers import AutoConfig, AutoModelForCausalLM, AutoProcessor
+from transformers import AutoConfig, AutoImageProcessor, AutoModelForCausalLM, AutoProcessor, AutoTokenizer
 
 
 logger = logging.getLogger(__name__)
@@ -110,9 +112,15 @@ def _extract_image(item: dict[str, Any]) -> tuple[Image.Image, str] | None:
     return None
 
 
-def _from_pretrained_compat(model_cls, model_id: str, dtype: torch.dtype, trust_remote_code: bool):
+def _from_pretrained_compat(
+    model_cls,
+    model_id: str,
+    dtype: torch.dtype,
+    trust_remote_code: bool,
+    device_map: str,
+):
     common_kwargs = {
-        "device_map": "auto",
+        "device_map": device_map,
         "trust_remote_code": trust_remote_code,
     }
 
@@ -122,63 +130,140 @@ def _from_pretrained_compat(model_cls, model_id: str, dtype: torch.dtype, trust_
         return model_cls.from_pretrained(model_id, torch_dtype=dtype, **common_kwargs)
 
 
-def _safe_load_model(model_id: str, dtype: torch.dtype, trust_remote_code: bool):
+def _safe_load_model(model_id: str, dtype: torch.dtype, trust_remote_code: bool, device_map: str):
     config = AutoConfig.from_pretrained(model_id, trust_remote_code=trust_remote_code)
     model_type = str(getattr(config, "model_type", "")).lower()
 
     if "llava_next" in model_type and LlavaNextForConditionalGeneration is not None:
-        return _from_pretrained_compat(LlavaNextForConditionalGeneration, model_id, dtype, trust_remote_code)
+        return _from_pretrained_compat(LlavaNextForConditionalGeneration, model_id, dtype, trust_remote_code, device_map)
 
     if "llava" in model_type and LlavaForConditionalGeneration is not None:
-        return _from_pretrained_compat(LlavaForConditionalGeneration, model_id, dtype, trust_remote_code)
+        return _from_pretrained_compat(LlavaForConditionalGeneration, model_id, dtype, trust_remote_code, device_map)
 
     if AutoModelForVision2Seq is not None:
         try:
-            return _from_pretrained_compat(AutoModelForVision2Seq, model_id, dtype, trust_remote_code)
+            return _from_pretrained_compat(AutoModelForVision2Seq, model_id, dtype, trust_remote_code, device_map)
         except Exception:
             pass
 
-    return _from_pretrained_compat(AutoModelForCausalLM, model_id, dtype, trust_remote_code)
+    return _from_pretrained_compat(AutoModelForCausalLM, model_id, dtype, trust_remote_code, device_map)
 
 
 def load_hf_mllm(model_id: str, trust_remote_code: bool = False):
-    import os
-    import tempfile
-    
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    dtype = torch.float16 if device == "cuda" else torch.float32
+    low_vram_threshold_gb = 8.0
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is required. CPU fallback is disabled.")
+
+    total_vram_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+    if total_vram_gb < low_vram_threshold_gb:
+        raise RuntimeError(
+            f"GPU has {total_vram_gb:.2f} GB VRAM (< {low_vram_threshold_gb:.1f} GB). "
+            "CPU fallback is disabled. Use a smaller model or a higher-memory GPU."
+        )
+
+    device = "cuda"
+    device_map = "auto"
+    dtype = torch.float16
 
     # Load model first, then processor to avoid tokenizer cache issues
     try:
-        model = _safe_load_model(model_id=model_id, dtype=dtype, trust_remote_code=trust_remote_code)
+        model = _safe_load_model(
+            model_id=model_id,
+            dtype=dtype,
+            trust_remote_code=trust_remote_code,
+            device_map=device_map,
+        )
         model.eval()
     except Exception as e:
         print(f"Error loading model: {e}")
         raise
     
-    # Try to load processor
+    def _build_llava_processor_compat(cache_dir: str | None = None):
+        logger.warning("Using compatibility LLaVA processor construction path.")
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_id,
+            trust_remote_code=trust_remote_code,
+            use_fast=False,
+            cache_dir=cache_dir,
+        )
+        image_processor = AutoImageProcessor.from_pretrained(
+            model_id,
+            trust_remote_code=trust_remote_code,
+            cache_dir=cache_dir,
+        )
+
+        try:
+            from transformers import LlavaProcessor
+
+            return LlavaProcessor(tokenizer=tokenizer, image_processor=image_processor)
+        except Exception as llava_ctor_error:
+            logger.warning(
+                "Could not instantiate LlavaProcessor directly (%s). Falling back to minimal wrapper.",
+                llava_ctor_error,
+            )
+
+            class _CompatLlavaProcessor:
+                def __init__(self, tok, img_proc):
+                    self.tokenizer = tok
+                    self.image_processor = img_proc
+
+                def __call__(self, text, images, return_tensors="pt"):
+                    images_list = images if isinstance(images, list) else [images]
+                    text_inputs = self.tokenizer(text=text, return_tensors=return_tensors)
+                    image_inputs = self.image_processor(images=images_list, return_tensors=return_tensors)
+                    image_inputs.update(text_inputs)
+                    return image_inputs
+
+                def decode(self, *args, **kwargs):
+                    return self.tokenizer.decode(*args, **kwargs)
+
+                def batch_decode(self, *args, **kwargs):
+                    return self.tokenizer.batch_decode(*args, **kwargs)
+
+            return _CompatLlavaProcessor(tokenizer, image_processor)
+
+    # Try to load processor with robust fallbacks for tokenizer/config incompatibilities
     try:
         processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=trust_remote_code)
     except Exception as e:
-        if "ModelWrapper" in str(e) or "data did not match" in str(e):
-            # Tokenizer cache corruption detected - use fresh cache
-            print(f"Detected tokenizer cache issue: {e}")
-            print("Retrying with fresh cache...")
-            
-            # Create temporary cache directory
-            temp_cache = tempfile.mkdtemp(prefix="hf_cache_")
-            os.environ["HF_HOME"] = temp_cache
-            
-            # Retry processor loading
-            try:
-                from transformers import AutoProcessor as AP
-                processor = AP.from_pretrained(model_id, trust_remote_code=trust_remote_code)
-                print(f"✓ Successfully loaded processor with fresh cache")
-            except Exception as retry_error:
-                print(f"✗ Still failed after fresh cache: {retry_error}")
-                raise
-        else:
+        err_text = str(e)
+        is_image_token_error = "unexpected keyword argument 'image_token'" in err_text
+        is_fast_tokenizer_error = "ModelWrapper" in err_text or "data did not match" in err_text
+        if is_image_token_error:
+            processor = _build_llava_processor_compat()
+        elif not is_fast_tokenizer_error:
             raise
+        else:
+            logger.warning("Fast tokenizer load failed (%s). Retrying with slow tokenizer.", err_text)
+            try:
+                processor = AutoProcessor.from_pretrained(
+                    model_id,
+                    trust_remote_code=trust_remote_code,
+                    use_fast=False,
+                )
+            except Exception as slow_error:
+                slow_err_text = str(slow_error)
+                if "unexpected keyword argument 'image_token'" in slow_err_text:
+                    processor = _build_llava_processor_compat()
+                else:
+                    logger.warning("Slow tokenizer retry failed (%s). Retrying with fresh cache.", slow_error)
+
+                    temp_cache = tempfile.mkdtemp(prefix="hf_cache_")
+                    try:
+                        processor = AutoProcessor.from_pretrained(
+                            model_id,
+                            trust_remote_code=trust_remote_code,
+                            use_fast=False,
+                            cache_dir=temp_cache,
+                        )
+                    except Exception as cache_error:
+                        cache_err_text = str(cache_error)
+                        if "unexpected keyword argument 'image_token'" in cache_err_text:
+                            processor = _build_llava_processor_compat(cache_dir=temp_cache)
+                        else:
+                            raise
+                    os.environ["HF_HOME"] = temp_cache
+                    logger.info("Processor loaded successfully using fresh cache directory: %s", temp_cache)
     
     return model, processor
 
